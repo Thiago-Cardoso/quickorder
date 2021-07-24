@@ -8,6 +8,9 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "bootstrap"
+import "./adminlte.min"
+import "@fortawesome/fontawesome-free/js/all"
+import "./flashMessages"
 
 import "../src/application"
 
