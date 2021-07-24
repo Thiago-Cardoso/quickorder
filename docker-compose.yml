@@ -1,0 +1,25 @@
+version: '3.3'
+services:
+    docker:
+        restart: unless-stopped
+        network_mode: redelocal
+        container_name: quickorder
+        env_file: .env
+        ports:
+            - '3000:3000'
+        volumes:
+            - '/etc/localtime:/etc/localtime:ro'
+            - '/etc/timezone:/etc/timezone:ro'
+            - '/storage/onebitcode/quickorder/app/:/app'
+            - '/storage/onebitcode/quickorder/app/start.sh:/app/start.sh'
+            - '/storage/onebitcode/quickorder/bundle:/usr/local/bundle'
+        image: 'pompermaier/docker:ruby-3.0.1'
+    db:
+        container_name: postgres
+        network_mode: redelocal
+        ports:
+            - '5432:5432'
+        environment:
+            - POSTGRES_PASSWORD=db_password
+            - PGDATA=/var/lib/postgresql/data/pgdata
+        image: postgres
