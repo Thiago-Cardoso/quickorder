@@ -34,15 +34,17 @@
       <file leaf-file-name="database.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/database.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-953">
-              <caret line="17" column="21" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="21" />
+            <state relative-caret-position="-577">
+              <caret line="13" column="21" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-72" />
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -232,12 +234,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627147530408</updated>
-      <workItem from="1627147531806" duration="1443000" />
+      <workItem from="1627147531806" duration="2037000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1443000" />
+    <option name="totallyTimeSpent" value="2037000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="72" y="27" width="1848" height="1053" extended-state="6" />
@@ -274,13 +276,15 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/config/database.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-953">
-          <caret line="17" column="21" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="21" />
+        <state relative-caret-position="-577">
+          <caret line="13" column="21" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-72" />
+      </provider>
     </entry>
   </component>
 </project>

@@ -24,8 +24,9 @@ RUN curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash - && \
     apt-get autoclean -y && \
     apt-get clean -y
 
+RUN mkdir -p /app
 WORKDIR /app
-COPY start.sh /app
+COPY start.sh /
 
 EXPOSE 3000
-CMD ["/bin/bash", "/app/start.sh"]
+CMD ["/bin/bash", "/start.sh"]
