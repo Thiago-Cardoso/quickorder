@@ -7,8 +7,8 @@ class Employee < ApplicationRecord
 
   # Validates
   validates :name, presence: true
-  validates :type, presence: true
+  validates :occupation, presence: true
 
   # Enumerate
-  enum type: { admin: 0, clerk: 1, cooker: 2 }
+  enum occupation: { admin: 0, clerk: 1, cooker: 2 }
 end
