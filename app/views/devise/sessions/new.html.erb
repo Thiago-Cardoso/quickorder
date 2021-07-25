@@ -1,0 +1,59 @@
+
+<div class="hold-transition login-page">
+  <div class="login-box">
+    <!-- /.login-logo -->
+    <div class="card card-outline card-primary">
+      <div class="card-header text-center">
+       <%= image_tag 'restro-theme_logo.png', alt:"Logo", width:"250", height:"250", class:"brand-image img-fluid", style:"opacity: .8" %>
+      </div>
+      <div class="card-body">
+        <p class="login-box-msg">Preencha seus dados para entrar</p>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+              <div class="input-group mb-3">
+                <input class="input" name="employee[email]" class="form-control" type="email" placeholder="Email">
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    <span class="fas fa-envelope"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="input-group mb-3">
+                <input class="input" name="employee[password]" class="form-control" type="password" placeholder="Senha">
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    <span class="fas fa-lock"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-8">
+                  <div class="icheck-primary">
+                      <% if devise_mapping.rememberable? %>
+                      <div class="field">
+                        <%= f.check_box :remember_me %>
+                        <label for="employee_remember_me">Lembrar</label>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+                <!-- /.col -->
+                <div class="col-4">
+                    <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+                </div>
+                <!-- /.col -->
+              </div>
+          <% end %>
+
+        <div class="social-auth-links text-center mt-2 mb-3">
+            <%= render "devise/shared/links" %>
+        </div>
+        <!-- /.social-auth-links -->
+      </div>
+      <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+  </div>
+</div>
+
+
+
