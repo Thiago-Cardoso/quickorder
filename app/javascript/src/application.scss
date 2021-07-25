@@ -2,3 +2,11 @@
 @import "adminlte.min";
 @import '@fortawesome/fontawesome-free/scss/fontawesome';
 @import "toastify-js/src/toastify.css";
+
+.brand-link .brand-image {
+  float: none !important;
+  max-height: 45px !important;
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}

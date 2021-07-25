@@ -1,0 +1,46 @@
+<div class="content-wrapper">
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">Categorias</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <%= link_to new_dashboard_category_path, class: "btn btn-app bg-success float-right" do %>
+      <i class="far fa-plus-square"></i> Adicionar
+    <% end %>
+    <div class="table-responsive">
+      <table class="table">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Descrição</th>
+              <th scope="col">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%  @categories.each do |category| %>
+              <tr>
+                <th scope="row"><%= category.id %></th>
+                <td><%= category.description %></td>
+                <td>
+                  <%= link_to edit_dashboard_category_path(category), class:"btn bg-info btn-sm" do %>
+                    <i class="fas fa-edit"></i>
+                  <% end %>
+                  <%= link_to dashboard_category_path(category), method: :delete, class:"btn bg-danger btn-sm",
+                                                                 data: {confirm: "Deseja realmente excluir?"} do %>
+                    <i class="far fa-trash-alt"></i>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </table>
+    </div>
+  </div>
+</div>
