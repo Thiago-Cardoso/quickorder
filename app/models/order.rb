@@ -1,6 +1,8 @@
 class Order < ApplicationRecord
   validates :client_name, presence: true 
   validates :table_number, presence: true
+
+  belongs_to :employee
   
 
   validates :situation, presence: true

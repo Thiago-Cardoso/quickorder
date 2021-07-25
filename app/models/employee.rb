@@ -1,7 +1,7 @@
 class Employee < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  belongs_to :order, optional: true
+  has_many :order
 
   validates :name, presence: true
 
