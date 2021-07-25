@@ -9,7 +9,8 @@
     </div>
   </div>
   <div class="container-fluid">
-    <%= link_to new_dashboard_category_path, class: "btn btn-app bg-success float-right" do %>
+    <%= link_to new_dashboard_category_path, remote: true, class: "btn btn-app bg-success float-right", 
+                                             data:{toggle:"modal", target:"#newCategoryModal"} do %>
       <i class="far fa-plus-square"></i> Adicionar
     <% end %>
     <div class="table-responsive">
@@ -28,7 +29,8 @@
                 <th scope="row"><%= category.id %></th>
                 <td><%= category.description %></td>
                 <td>
-                  <%= link_to edit_dashboard_category_path(category), class:"btn bg-info btn-sm" do %>
+                  <%= link_to edit_dashboard_category_path(category), remote: true, class:"btn bg-info btn-sm",
+                                                                      data:{toggle:"modal", target:"#editCategoryModal"} do %>
                     <i class="fas fa-edit"></i>
                   <% end %>
                   <%= link_to dashboard_category_path(category), method: :delete, class:"btn bg-danger btn-sm",
@@ -41,6 +43,36 @@
           </tbody>
         </table>
       </table>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="newCategoryModal" tabindex="-1" aria-labelledby="newCategoryModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cadastrar Categoria</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div id="newCategoryForm">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="editCategoryModal" tabindex="-1" aria-labelledby="editCategoryModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Atualizar Categoria</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div id="editCategoryForm">
+      </div>
     </div>
   </div>
 </div>
