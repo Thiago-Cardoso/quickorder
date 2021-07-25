@@ -21,6 +21,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise'
 # authorization
 gem "cancan"
+gem 'cocoon', '~> 1.2', '>= 1.2.15'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
