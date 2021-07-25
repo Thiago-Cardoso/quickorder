@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :product_order do
-    quantitie { 1 }
-    note { "MyString" }
-    product { nil }
-    order { nil }
+    quantitie { Faker::Commerce.unique.promotion_code(digits: 1) }
+    sequence(:note) { |n| "My Order #{n}" }
+    product { 1 }
+    order { 1 }
   end
 end

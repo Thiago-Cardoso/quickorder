@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :order do
-    client_name { "MyString" }
+    client_name { Faker::Name.name }
     table_number { "MyString" }
   end
 end

@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :product do
-    name { "MyString" }
-    description { "MyText" }
-    price { 1.5 }
-    category { nil }
+    sequence(:name) { |n| "Product #{n}" }
+    description { Faker::Food.dish }
+    price { Faker::Commerce.price(range: 100.0..400.0) }
+    status { 1 }
   end
 end
