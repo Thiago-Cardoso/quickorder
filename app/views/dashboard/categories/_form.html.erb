@@ -1,0 +1,14 @@
+<%= form_with model: [:dashboard, @category], local: true do |f| %>
+  <div class="modal-body">
+    <div class="form-row justify-content-lg-center">
+      <div class="form-group col-md-12 col-lg-10">
+        <%= f.label :description %>
+        <%= f.text_field :description, class: "form-control" %>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <%= f.submit class: 'btn btn-success my-1', data: { disable_with: 'Criando....⌛'} %>
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+  </div>
+<% end %>
