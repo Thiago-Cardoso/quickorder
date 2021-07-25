@@ -11,8 +11,9 @@ class Dashboard::CategoriesController < DashboardController
   def edit; end
 
   def create
-    @category = Category.new(categories_params)
-    if @category.save
+    @category = Category.new
+    @category.attributes = categories_params
+    if save_category!
       redirect_to dashboard_categories_path, notice: "#{@category.description} cadastrada com sucesso!"
     else
       alert_errors
@@ -20,7 +21,8 @@ class Dashboard::CategoriesController < DashboardController
   end
 
   def update
-    if @category.update(categories_params)
+    @category.attributes = categories_params
+    if save_category!
       redirect_to dashboard_categories_path, notice: "#{@category.description} atualizada com sucesso!"
     else
       alert_errors
@@ -36,6 +38,10 @@ class Dashboard::CategoriesController < DashboardController
   end
 
   private
+
+  def save_category!
+    @category.save!
+  end
 
   def alert_errors
     redirect_to dashboard_categories_path, alert: @category.errors.full_messages.to_sentence

@@ -15,7 +15,7 @@
     <% end %>
     <div class="table-responsive">
       <table class="table">
-        <table class="table table-hover">
+        <table id="categoryTable" class="table table-hover">
           <thead>
             <tr>
               <th scope="col">Id</th>
@@ -76,3 +76,9 @@
     </div>
   </div>
 </div>
+
+<script>
+$( document ).on('turbolinks:load', function() {
+  $('#categoryTable').DataTable();
+});
+</script>

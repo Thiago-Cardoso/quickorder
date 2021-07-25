@@ -13,6 +13,7 @@
     "jquery": "^3.6.0",
     "popper.js": "^1.16.1",
     "toastify-js": "^1.10.0",
+    "datatables.net": "^1.10.24",
     "webpack-cli": "^3.3.12"
   },
   "version": "0.1.0",
