@@ -4,5 +4,5 @@ class Employee < ApplicationRecord
   validates :name, presence: true
 
   validates :type, presence: true
-  enum type: { 'Gerente': 0, 'Cozinheiro': 1, 'Atendente': 2}
+  enum type: { admin: 0, clerk: 1, cooker: 2 }
 end
