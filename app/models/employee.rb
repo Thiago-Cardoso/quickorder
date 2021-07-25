@@ -3,5 +3,5 @@ class Employee < ApplicationRecord
          :recoverable, :rememberable, :validatable
   belongs_to :order, optional: true
 
-  enum type: { admin: 0, waitress: 1, cooker: 2}
+  enum type: { admin: 0, clerk: 1, cooker: 2}
 end
