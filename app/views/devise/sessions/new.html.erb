@@ -4,11 +4,10 @@
     <!-- /.login-logo -->
     <div class="card card-outline card-primary">
       <div class="card-header text-center">
-        <a href="../../index2.html" class="h1"><b>Login</b></a>
+       <%= image_tag 'restro-theme_logo.png', alt:"Logo", width:"250", height:"250", class:"brand-image img-fluid", style:"opacity: .8" %>
       </div>
       <div class="card-body">
         <p class="login-box-msg">Faça login com a sua conta para entrar</p>
-
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <div class="input-group mb-3">
             <input class="input" name="employee[email]" class="form-control" type="email" placeholder="Email">
@@ -32,7 +31,7 @@
                   <% if devise_mapping.rememberable? %>
                   <div class="field">
                     <%= f.check_box :remember_me %>
-                    <%= f.label :remember_me %>
+                     <label for="employee_remember_me">Lembrar</label>
                   </div>
                 <% end %>
               </div>
