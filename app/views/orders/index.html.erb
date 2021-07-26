@@ -10,16 +10,19 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-12 col-sm-12 col-md-4">
-        <div class="info-box mb-3">
-          <span class="info-box-icon bg-success elevation-1"><i class="fas fa-cart-plus"></i>
-            <div class="info-box-content">
-              <span class="info-box-text">Novo Pedido</span>
-            </div>
-          </span>
-        </div>
+        <a href="" data-toggle="modal" data-target="#orderModal">
+          <div class="info-box mb-3">
+            <span class="info-box-icon bg-success elevation-1"><i class="fas fa-cart-plus"></i>
+              <div class="info-box-content">
+                <span class="info-box-text">Novo Pedido</span>
+              </div>
+            </span>
+          </div>
+        </a>
       </div>
       <div class="clearfix hidden-md-up"></div>
       <div class="col-12 col-sm-12 col-md-4">
+      <a href="" data-toggle="modal" data-target="#followModal">
         <div class="info-box mb-3">
           <span class="info-box-icon bg-info elevation-1"><i class="fas fa-spinner"></i>
             <div class="info-box-content">
@@ -27,8 +30,10 @@
             </div>
           </span>
         </div>
+        </a>
       </div>
       <div class="col-12 col-sm-12 col-md-4">
+      <a href="" data-toggle="modal" data-target="#historicModal">
         <div class="info-box mb-3">
           <span class="info-box-icon bg-warning elevation-1 text-center"><i class="fas fa-eye"></i>
             <div class="info-box-content">
@@ -36,10 +41,14 @@
             </div>
           </span>
         </div>
+        </a>
       </div>
     </div>
   </div>
 </div>
+  <%= render 'modal_order' %>
+  <%= render 'modal_follow'%>
+  <%= render 'modal_historic' %>
 <footer class="text-center text-green mt-5 p-5">
   Versão 1.0.0
 </footer>

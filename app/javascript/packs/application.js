@@ -13,8 +13,6 @@ import "@fortawesome/fontawesome-free/js/all"
 import "./flashMessages"
 import "./datatable"
 
-require("@nathanvda/cocoon")
-
 import "../src/application"
 
 var jQuery = require("jquery")
