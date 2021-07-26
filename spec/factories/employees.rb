@@ -1,7 +1,8 @@
 FactoryBot.define do
   factory :employee do
-    name { "MyString" }
-    type { 1 }
-    order { nil }
+    name { Faker::Name.name }
+    occupation { :admin }
+    email { Faker::Internet.email }
+    password { "123456" }
   end
 end
