@@ -1,11 +1,11 @@
 class Ability
   include CanCan::Ability
-
-  def initialize(user)
-      user ||= Employee.new
-      if user.admin?
+  def initialize(employee)
+      if employee.admin?
         can :manage, :all
-      else
+      elsif employee.clerk?
+        can :read, :all
+      elsif employee.cooker?
         can :read, :all
       end
   end
