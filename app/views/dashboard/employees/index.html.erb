@@ -1,0 +1,84 @@
+<div class="content-wrapper">
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">Usuários</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <%= link_to new_dashboard_employee_path, remote: true, class: "btn btn-app bg-success float-right", 
+                                             data:{toggle:"modal", target:"#newEmployeeModal"} do %>
+      <i class="far fa-plus-square"></i> Adicionar
+    <% end %>
+    <div class="table-responsive">
+      <table class="table">
+        <table id="employeeTable" class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Ocupação</th>
+              <th scope="col">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%  @employees.each do |employee| %>
+              <tr>
+                <th scope="row"><%= employee.id %></th>
+                <td><%= employee.name %></td>
+                <td><%= employee.email %></td>
+                <td><%= employee.occupation %></td>
+                <td>
+                  <%= link_to edit_dashboard_employee_path(employee), remote: true, class:"btn bg-info btn-sm",
+                                                                      data:{toggle:"modal", target:"#editEmployeeModal"} do %>
+                    <i class="fas fa-edit"></i>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="newEmployeeModal" tabindex="-1" aria-labelledby="newEmployeeModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cadastrar Usuário</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div id="newEmployeeForm">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="editEmployeeModal" tabindex="-1" aria-labelledby="editEmployeeModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Atualizar Usuário</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div id="editEmployeeForm">
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+$( document ).on('turbolinks:load', function() {
+  $('#employeeTable').DataTable();
+});
+</script>

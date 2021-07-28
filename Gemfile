@@ -20,7 +20,7 @@ gem 'jbuilder', '~> 2.7'
 # devise
 gem 'devise'
 # authorization
-gem "cancan"
+gem 'cancancan', '~> 3.1'
 gem 'cocoon', '~> 1.2', '>= 1.2.15'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
