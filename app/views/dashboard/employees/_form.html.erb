@@ -1,0 +1,36 @@
+<%= form_with model: [:dashboard, @employee], local: true do |f| %>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Nome</label>
+      <%= f.text_field :name, type:"text", class:"form-control", placeholder:"João da Silva" %>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">E-mail</label>
+      <%= f.text_field :email, type:"email", class:"form-control", placeholder:"user@user.com" %>
+    </div>
+  </div>
+   <div class="form-row">
+      <div class="form-group col-md-6">
+        <%= f.label :occupation %><br />
+        <%= f.select :occupation, options_for_select(Employee.occupations.map { |key, value| [key.humanize, key] }, class:"form-control"), {prompt: "Selecione o seu valor"} %>
+      </div>
+        <div class="form-group col-md-6">
+        <%= f.label :status %><br />
+        <%= f.select :status, options_for_select(Employee.statuses.map { |key, value| [key.humanize, key] }, class:"form-control") %>
+      </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Senha</label>
+      <%= f.password_field :password, type: "password", class: "form-control", placeholder:"Digite sua senha" %>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Confirmação senha</label>
+      <%= f.password_field :password_confirmation, type: "password", class:"form-control", placeholder:"Confirme sua senha" %>
+    </div>
+  </div>
+  <div class="offset-md-5">
+    <%= f.submit class:"btn btn-success" %>
+    <%= link_to "Cancelar", dashboard_employees_path, class:"btn btn-danger" %>
+  </div>
+<% end %>
