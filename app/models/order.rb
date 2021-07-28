@@ -10,5 +10,5 @@ class Order < ApplicationRecord
   validates :situation, presence: true
 
   # Enumerate
-  enum situation: { 'Na fila': 0, 'Em andamento': 1, 'Concluído': 2, 'Cancelado': 3 }
+  enum situation: { 'queue': 0, 'progress': 1, 'done': 2, 'cancelled': 3 }
 end

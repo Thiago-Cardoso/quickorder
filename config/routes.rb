@@ -11,7 +11,9 @@ Rails.application.routes.draw do
     resources :categories
   end
 
-  resources :orders
+  resources :orders do
+    get :change_situation, on: :member
+  end
   resources :kitchen_orders, only: [:index]
   root 'dashboard#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

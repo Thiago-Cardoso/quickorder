@@ -1,4 +1,5 @@
-<div>
+<div class="wrapper">
+    <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <div class="container-fluid">
@@ -9,43 +10,76 @@
       </div>
     </div><!-- /.container-fluid -->
   </section>
-
   <!-- Main content -->
   <section class="content">
-
     <!-- Default box -->
     <div class="card card-solid">
       <div class="card-body pb-0">
         <div class="row">
           <%  @orders.each do |order| %>
             <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
-              <div class="card bg-light d-flex flex-fill">
+              <div id="card_<%=order.id%>", class="card bg-light d-flex flex-fill">
                 <div class="card-header text-muted border-bottom-0">
-                  <%= order.id %> - <%= order.situation %>
+                  #<%= order.id %> - <%= order.situation %>
                 </div>
                 <div class="card-body pt-0">
                   <div class="row">
-                    <div class="col-7">
+                    <div class="col-6">
                       <h2 class="lead"><b><%= order.client_name %></b></h2>
-                      <p class="text-muted text-sm"><b>Itens: </b> Web Designer / UX / Graphic Artist / Coffee Lover </p>
-                      <ul class="ml-4 mb-0 fa-ul text-muted">
-                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Address: Demo Street 123, Demo City 04312, NJ</li>
-                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone #: + 800 - 12 12 23 52</li>
-                      </ul>
-                    </div>
-                    <div class="col-5 text-center">
-                      Mesa: <%= order.table_number %>
+                    </div >
+                    <div class="col-6">
+                        <h2 class="lead"><b><%= order.table_number %></b></h2>
+                    </div >
+                  </div>
+                  <div class="row">
+                    <div class="col-12 mb-3">
+                      <div class="card">
+                        <div class="card-header">
+                          <h3 class="card-title">Itens</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body p-0">
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th style="width: 10px">#</th>
+                                <th>Produto</th>
+                                <th style="width: 10px text-center">Qtd</th>
+                                <th>Observação</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <% order.product_orders.each do |product_order| %>
+                                <tr>
+                                  <td>1.</td>
+                                  <td><%= product_order.product.name %></td>
+                                  <td style="align-center"><%= product_order.quantitie %></td>
+                                  <td><%= product_order.note %></td>
+                                </tr>
+                              <% end %>
+                            </tbody>
+                          </table>
+                        </div>
+                          <!-- /.card-body -->
+                      </div>
+                        <!-- /.card -->
                     </div>
                   </div>
                 </div>
                 <div class="card-footer">
                   <div class="text-right">
-                    <a href="#" class="btn btn-sm bg-teal">
+                    <%= link_to change_situation_order_path(order, situation: 3), class:"btn btn-sm btn-primary", remote: true do %>
                       <i class="fas fa-trash"></i>
-                    </a>
-                    <a href="#" class="btn btn-sm btn-primary">
-                      <i class="fas fa-mortar-pestle"></i> Iniciar
-                    </a>
+                    <% end %>
+                    <% if order.queue? %>
+                      <%= link_to change_situation_order_path(order, situation: 1), class:"btn btn-sm btn-primary", id:"change_situation_#{order.id}", remote: true do %>
+                        <i class="fas fa-mortar-pestle"></i> Iniciar
+                      <% end %>
+                    <% else %>
+                      <%= link_to change_situation_order_path(order, situation: 2), class:"btn btn-sm btn-primary", id:"change_situation_#{order.id}", remote: true do %>
+                        <i class="fas fa-mortar-pestle"></i> Finalizar
+                      <% end %>
+                    <% end %>
                   </div>
                 </div>
               </div>
@@ -58,4 +92,5 @@
 
   </section>
   <!-- /.content -->
+  </div>
 </div>

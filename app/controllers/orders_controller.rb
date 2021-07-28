@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_orders, only: %i[edit update destroy]
+  before_action :set_orders, only: %i[edit update destroy change_situation]
   def index
     @orders = Order.order(id: :asc)
   end
@@ -35,6 +35,12 @@ class OrdersController < ApplicationController
     else
       alert_errors
     end
+  end
+
+  def change_situation 
+    situation = params[:situation]
+    @order.situation = situation.to_i
+    @order.save
   end
 
   private
