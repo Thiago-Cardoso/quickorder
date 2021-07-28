@@ -3,6 +3,22 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :occupation %><br />
+    <%= f.select :occupation, options_for_select(Employee.occupations.map { |key, value| [key.humanize, key] }), {prompt: "Selecione o seu valor"} %>
+  </div>
+
+    <div class="field">
+    <%= f.label :status %><br />
+    <%= f.select :status, options_for_select(Employee.statuses.map { |key, value| [key.humanize, key] }) %>
+  </div>
+
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>

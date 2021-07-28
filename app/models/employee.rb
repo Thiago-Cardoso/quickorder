@@ -10,5 +10,6 @@ class Employee < ApplicationRecord
   validates :occupation, presence: true
 
   # Enumerate
-  enum occupation: { admin: 0, clerk: 1, cooker: 2 }
+  enum occupation: { admin: 0, atendente: 1, cozinheiro: 2 }
+  enum status: { 'Ativo': 1, 'Inativo': 0 }
 end
