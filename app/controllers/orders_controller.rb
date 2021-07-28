@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
 
   def index
     @orders = Order.order(id: :asc)
+    @categories = Category.all
   end
 
   def new

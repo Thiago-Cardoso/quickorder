@@ -1,7 +1,7 @@
 class Order < ApplicationRecord
   # Relationship
   belongs_to :employee
-  has_many :products, through: :product_orders
+
   has_many :product_orders
   accepts_nested_attributes_for :product_orders, allow_destroy: true, reject_if: :all_blank
 

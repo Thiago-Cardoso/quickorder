@@ -10,7 +10,7 @@
   </div>
   <div>
     <%= f.label :product_id %>
-    <%= collection_select(:product_order, :product_id, Product.all, :id, :name,  {prompt: 'Selecione'}, class: "form-control select2") %>
+    <%= f.collection_select(:product_id, Product.all, :id, :name,  {prompt: 'Selecione'}, class: "form-control select2") %>
   </div>
   <div>
     <%= link_to "Remove", '#', class: "remove_fields" %>

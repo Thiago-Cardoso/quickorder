@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-
-  #devise_for :employees, :controllers => { registrations: 'registrations' }
   devise_for :employees do
     get '/employees/sign_out' => 'devise/sessions#destroy'
     get '/employees/reset_password'
@@ -9,6 +7,7 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'dashboard#index'
   namespace :dashboard do
     resources :categories
+    resources :employees
   end
 
   resources :orders

@@ -26,10 +26,10 @@
           </div>
         </div>
         <div class="row">
-            <%= f.fields_for :product_orders do |product_orders_form| %>
-              <%= render "product_order_fields", f: product_orders_form %>
-            <% end %>
-            <%= link_to_add_fields "Adicionar Produto", f, :product_orders %>
+          <%= f.fields_for :product_orders do |product_orders_form| %>
+            <%= render "product_order_fields", f: product_orders_form %>
+          <% end %>
+          <%= link_to_add_fields "Adicionar Produto", f, :product_orders %>
         </div>
       </div>
       <div class="text-center">
