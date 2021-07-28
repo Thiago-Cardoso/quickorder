@@ -1,5 +1,7 @@
 class Dashboard::CategoriesController < DashboardController
   before_action :set_categories, only: %i[edit update destroy]
+  load_and_authorize_resource param_method: :categories_params
+
   def index
     @categories = Category.order(id: :asc)
   end

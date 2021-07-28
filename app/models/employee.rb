@@ -11,5 +11,5 @@ class Employee < ApplicationRecord
 
   # Enumerate
   enum occupation: { admin: 0, atendente: 1, cozinheiro: 2 }
-  enum status: { 'Inativo': 0, 'Ativo': 1 }
+  enum status: { 'Ativo': 1, 'Inativo': 0 }
 end

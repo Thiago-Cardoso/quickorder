@@ -1,6 +1,7 @@
 class Dashboard::EmployeesController < DashboardController
   before_action :set_employees, only: %i[edit update destroy]
   before_action :allow_without_password, only: [:update]
+  load_and_authorize_resource param_method: :employee_params
 
   def index
     @employees = Employee.all
@@ -12,7 +13,7 @@ class Dashboard::EmployeesController < DashboardController
 
   def create
     @employee = Employee.new
-    @employee.attributes = params_employee
+    @employee.attributes = employee_params
     if save_employee!
       redirect_to dashboard_employees_path, notice: "#{@employee.name} cadastrada com sucesso!"
     else
@@ -23,7 +24,7 @@ class Dashboard::EmployeesController < DashboardController
   def edit; end
 
   def update
-    @employee.attributes = params_employee
+    @employee.attributes = employee_params
     if save_employee!
       redirect_to dashboard_employees_path, notice: "#{@employee.name} atualizada com sucesso!"
     else
@@ -53,7 +54,7 @@ class Dashboard::EmployeesController < DashboardController
     @employee = Employee.find(params[:id])
   end
 
-  def params_employee
+  def employee_params
     params.require(:employee).permit(:name, :email, :status, :occupation, :password, :password_confirmation)
   end
 
