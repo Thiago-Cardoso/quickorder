@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
   # Relationship
-  belongs_to :category
+  belongs_to :category, optional: true
 
   # Validates
   validates :name, presence: true 

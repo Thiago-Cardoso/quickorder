@@ -1,0 +1,41 @@
+<style>
+  body {
+    background: #bdc3c7;
+  }
+</style>
+<div class="container logo-order text-center">
+  <%= image_tag 'logo.jpeg', class:"img-fluid" %>
+</div>
+<div class="container order">
+  <div class="container-fluid">
+    <%= form_with model: @order, local: true do |f| %>
+      <%= f.hidden_field :employee_id, value: current_employee.id %>
+      <div class="container">
+        <div class="row">
+          <div class="form-group col-md-2">
+            <%= f.label :client_name %>
+            <%= f.text_field :client_name, class: "form-control" %>
+          </div>
+          <div class="form-group col-md-2">
+            <%= f.label :table_number %>
+            <%= f.number_field :table_number, class: "form-control" %>
+          </div>
+          <div class="form-group col-md-2">
+            <%= f.label :situation %>
+            <%= f.select(:situation, Order.situations.keys, { prompt: "Selecione" }, { class: "form-control" }) %>
+          </div>
+        </div>
+        <div class="row">
+            <%= f.fields_for :product_orders do |product_orders_form| %>
+              <%= render "product_order_fields", f: product_orders_form %>
+            <% end %>
+            <%= link_to_add_fields "Adicionar Produto", f, :product_orders %>
+        </div>
+      </div>
+      <div class="text-center">
+        <%= f.submit class: "btn btn-success", data: { disable_with: "Criando....⌛" } %>
+        <%= link_to "Cancelar", orders_path, class: "btn btn-danger ml-1" %>
+      </div>
+    <% end %>
+  </div>
+</div>

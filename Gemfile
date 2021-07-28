@@ -21,7 +21,6 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise'
 # authorization
 gem "cancan"
-gem 'cocoon', '~> 1.2', '>= 1.2.15'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
@@ -40,6 +39,8 @@ group :development, :test do
   gem 'faker'
   gem 'rspec-rails', '~> 4.0.1'
   gem 'shoulda-matchers', '~> 4.0'
+  gem 'ruby-debug-ide', '~> 0.7.2'
+  gem 'debase'
 end
 
 group :development do

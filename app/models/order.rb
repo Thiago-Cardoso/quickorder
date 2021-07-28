@@ -1,8 +1,9 @@
 class Order < ApplicationRecord
   # Relationship
   belongs_to :employee
+  has_many :products, through: :product_orders
   has_many :product_orders
-  accepts_nested_attributes_for :product_orders, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :product_orders, allow_destroy: true, reject_if: :all_blank
 
   # Validates
   validates :client_name, presence: true
@@ -11,4 +12,5 @@ class Order < ApplicationRecord
 
   # Enumerate
   enum situation: { 'Na fila': 0, 'Em andamento': 1, 'Concluído': 2, 'Cancelado': 3 }
+
 end
