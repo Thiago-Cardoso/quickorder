@@ -17,4 +17,5 @@ class Order < ApplicationRecord
   scope :concluido, ->{ where(situation: 2)}
   scope :cancelado, ->{ where(situation: 3)}
 
+  enum situation: { queue: 0, progress: 1, concluded: 2, canceled: 3 }
 end
