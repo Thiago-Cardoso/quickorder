@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def after_sign_in_path_for(resource)
-    current_employee.cozinheiro? ? kitchen_orders_path : dashboard_path
+    current_employee.cooker? ? kitchen_orders_path : dashboard_path
   end
 
   def default_url_options

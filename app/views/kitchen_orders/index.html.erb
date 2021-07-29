@@ -9,7 +9,7 @@
         </div>
         <div class="col-sm-1">
           <%= link_to destroy_employee_session_path(), class:"btn btn-sm btn-primary" do %>
-            <i class="fas fa-concierge-bell"></i> Sair
+            <i class="fas fa-door-open"></i> Sair
           <% end %>
         </div>
       </div>
@@ -25,7 +25,7 @@
             <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
               <div id="card_<%=order.id%>", class="card bg-light d-flex flex-fill">
                 <div class="card-header text-muted <%= order.queue? ? "bg-secondary" : "bg-success" %>">
-                  #<%= order.id %> - <%= order.situation %>
+                  #<%= order.id %>
                 </div>
                 <div class="card-body pt-1">
                   <div class="row">
