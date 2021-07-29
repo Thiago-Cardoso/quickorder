@@ -8,9 +8,7 @@
           <h1>Pedidos na Cozinha</h1>
         </div>
         <div class="col-sm-1">
-          <%= link_to destroy_employee_session_path(), class:"btn btn-sm btn-primary" do %>
-            <i class="fas fa-door-open"></i> Sair
-          <% end %>
+          <a rel="nofollow" data-method="delete" class="btn btn-sm btn-primary" href="/employees/sign_out"><i class="fas fa-door-open"></i> Sair</a>
         </div>
       </div>
     </div><!-- /.container-fluid -->
