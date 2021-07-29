@@ -33,10 +33,7 @@
             <span class="info-box-icon bg-success elevation-1"><i class="fas fa-list-alt"></i></span>
             <div class="info-box-content">
               <span class="info-box-text">Total</span>
-              <%# <span class="info-box-number">
-                10
-                <small>%</small>
-              </span> %>
+                <span class="info-box-number"> <%= @orders.size %></span> 
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -48,7 +45,7 @@
             <span class="info-box-icon bg-info elevation-1"><i class="fas fa-thumbs-up"></i></span>
             <div class="info-box-content">
               <span class="info-box-text">Concluídos</span>
-              <%# <span class="info-box-number">41,410</span> %>
+              <span class="info-box-number"><%= @orders_concluido.size %></span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -62,7 +59,7 @@
             <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-shopping-cart"></i></span>
             <div class="info-box-content">
               <span class="info-box-text">Na fila</span>
-              <%# <span class="info-box-number">760</span> %>
+              <span class="info-box-number"><%= @orders_fila.size %></span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -74,7 +71,7 @@
             <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-window-close"></i></span>
             <div class="info-box-content">
               <span class="info-box-text">Cancelados</span>
-              <%# <span class="info-box-number">2,000</span> %>
+                <span class="info-box-number"><%= @orders_cancelado.size %></span>
             </div>
             <!-- /.info-box-content -->
           </div>
