@@ -3,9 +3,9 @@ class Ability
   def initialize(employee)
       if employee.admin?
         can :manage, :all
-      elsif employee.atendente?
+      elsif employee.clerk?
         can :read, :all
-      elsif employee.cozinheiro?
+      elsif employee.cooker?
         can :read, :all
       end
   end
