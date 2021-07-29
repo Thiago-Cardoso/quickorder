@@ -4,5 +4,6 @@ FactoryBot.define do
     occupation { :admin }
     email { Faker::Internet.email }
     password { "123456" }
+    status { 1 }
   end
 end
