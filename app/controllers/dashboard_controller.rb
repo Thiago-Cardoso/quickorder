@@ -1,21 +1,29 @@
 class DashboardController < ApplicationController
   layout 'dashboard'
   def index
+    if current_employee.occupation == 'admin'
+      info_admin
+    else
+      info_users
+    end
+
+    # @sum_orders = ProductOrder.joins('inner join products on products.id = product_orders.product_id').sum(:price).round(2), 
+    # depois só passar um where created_at pra fazer o filtro
+  end
+
+  def info_admin
     @orders = Order.all
-    @orders_fila = Order.na_fila
-    # @orders = Order.na_fila..where(employee_id: current_employee)
-    @orders_em_andamento = Order.em_andamento
-    @orders_concluido = Order.concluido
-    @orders_cancelado = Order.cancelado
+    @orders_queue = Order.queue
+    @orders_progress = Order.progress
+    @orders_concluded = Order.concluded
+    @orders_canceled = Order.canceled
+  end
 
-    # @sum_orders = ProductOrder.joins('inner join products on products.id = product_orders.product_id').sum(:price).round(2), depois só passar um where created_at pra fazer o filtro
-
-    # if current_employee == admin
-    #   @orders = Order.na_fila.count
-    # else
-    #   @orders = Order.na_fila.where(employee_id: current_employee)
-    
-    # tenta algo assim pra vc validar o usuario no controller
-    # se for admin traz tudo se não traz do usuario logado
+  def info_users
+    @orders = Order.all.where(employee_id: current_employee)
+    @orders_queue = Order.queue.where(employee_id: current_employee)
+    @orders_progress = Order.progress.where(employee_id: current_employee)
+    @orders_concluded = Order.concluded.where(employee_id: current_employee)
+    @orders_canceled = Order.canceled.where(employee_id: current_employee)
   end
 end

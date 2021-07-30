@@ -12,9 +12,9 @@ class Order < ApplicationRecord
   # Enumerate
   enum situation: { queue: 0, progress: 1, concluded: 2, canceled: 3 }
 
-  scope :na_fila, ->{ where(situation: 0)}
-  scope :em_andamento, ->{ where(situation: 1)}
-  scope :concluido, ->{ where(situation: 2)}
-  scope :cancelado, ->{ where(situation: 3)}
+  scope :queue, ->{ where(situation: 0)}
+  scope :progress, ->{ where(situation: 1)}
+  scope :concluded, ->{ where(situation: 2)}
+  scope :canceled, ->{ where(situation: 3)}
 
 end

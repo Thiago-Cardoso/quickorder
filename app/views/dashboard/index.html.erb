@@ -12,7 +12,11 @@
     </div>
 
     <div class="d-flex justify-content-end my-5">
-      <h3>colocar o calendário</h3>
+      <h6> Data inicial <h6>
+      <br>
+      <input type="date">
+      data final
+      <input type="date">
     </div>
     <div class="col-sm-6">
       <h3><i class="far fa-calendar-alt"></i> Dia</h3>
@@ -28,50 +32,52 @@
     <div class="container-fluid">
       <!-- Info boxes -->
       <div class="row">
-        <div class="col-12 col-sm-6 col-md-3">
+        <div class="col-12 col-sm-6 col-md-2">
           <div class="info-box">
             <span class="info-box-icon bg-success elevation-1"><i class="fas fa-list-alt"></i></span>
             <div class="info-box-content">
               <span class="info-box-text">Total</span>
                 <span class="info-box-number"> <%= @orders.size %></span> 
             </div>
-            <!-- /.info-box-content -->
           </div>
-          <!-- /.info-box -->
         </div>
-        <!-- /.col -->
-        <div class="col-12 col-sm-6 col-md-3">
+        <div class="col-12 col-sm-6 col-md-2">
           <div class="info-box mb-3">
             <span class="info-box-icon bg-info elevation-1"><i class="fas fa-thumbs-up"></i></span>
             <div class="info-box-content">
               <span class="info-box-text">Concluídos</span>
-              <span class="info-box-number"><%= @orders_concluido.size %></span>
+              <span class="info-box-number"><%= @orders_concluded.size %></span>
             </div>
-            <!-- /.info-box-content -->
           </div>
-          <!-- /.info-box -->
         </div>
-        <!-- /.col -->
-        <!-- fix for small devices only -->
+        <div class="col-12 col-sm-6 col-md-2">
+          <div class="info-box mb-3">
+            <span class="info-box-icon bg-info elevation-1"><i class="fas fa-thumbs-up"></i></span>
+            <div class="info-box-content">
+              <span class="info-box-text">Em Andamento</span>
+              <span class="info-box-number"><%= @orders_progress.size %></span>
+            </div>
+          </div>
+        </div>
         <div class="clearfix hidden-md-up"></div>
-        <div class="col-12 col-sm-6 col-md-3">
+        <div class="col-12 col-sm-6 col-md-2">
           <div class="info-box mb-3">
             <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-shopping-cart"></i></span>
             <div class="info-box-content">
               <span class="info-box-text">Na fila</span>
-              <span class="info-box-number"><%= @orders_fila.size %></span>
+              <span class="info-box-number"><%= @orders_queue.size %></span>
             </div>
             <!-- /.info-box-content -->
           </div>
           <!-- /.info-box -->
         </div>
         <!-- /.col -->
-        <div class="col-12 col-sm-6 col-md-3">
+        <div class="col-12 col-sm-6 col-md-2">
           <div class="info-box mb-3">
             <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-window-close"></i></span>
             <div class="info-box-content">
               <span class="info-box-text">Cancelados</span>
-                <span class="info-box-number"><%= @orders_cancelado.size %></span>
+                <span class="info-box-number"><%= @orders_canceled.size %></span>
             </div>
             <!-- /.info-box-content -->
           </div>
