@@ -69,7 +69,7 @@
                 </div>
                 <div class="card-footer">
                   <div class="text-right">
-                    <%= link_to change_situation_order_path(order, situation: 3), class:"btn btn-sm btn-danger", remote: true do %>
+                    <%= link_to change_situation_order_path(order, situation: 3), class:"btn btn-sm btn-danger", data: { confirm: "Tem certeza que deseja cancelar o pedido?" }, remote: true do %>
                       <i class="fas fa-times"></i> Cancelar
                     <% end %>
                     <% if order.queue? %>
