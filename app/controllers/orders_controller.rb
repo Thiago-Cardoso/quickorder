@@ -49,10 +49,7 @@ class OrdersController < ApplicationController
   private
 
   def save_order!
-    @orders = @order.product_orders.select { |order_item| order_item.quantitie != nil }
-    @orders.each do |order|
-      order.save!
-    end
+    @order.save!
   end
 
   def alert_errors

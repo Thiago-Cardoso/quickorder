@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   resource :product_orders
-  get 'cart', to: 'cart#show'
   devise_for :employees do
     get '/employees/sign_out' => 'devise/sessions#destroy'
     get '/employees/reset_password'
