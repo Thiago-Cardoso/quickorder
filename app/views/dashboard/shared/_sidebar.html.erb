@@ -35,18 +35,28 @@
         </li>
         </li>
         <li class="nav-item">
-        <%= link_to dashboard_products_path, class:"nav-link" do %>
+          <%= link_to dashboard_products_path, class:"nav-link" do %>
             <i class="nav-icon fas fa-th"></i>
             <p>
               Produto
             </p>
-        <% end %>
+          <% end %>
         </li>
           <li class="nav-item">
           <%= link_to dashboard_employees_path, class:"nav-link" do %>
             <i class="fas fa-users"></i>
             <p>
               Usuários
+            </p>
+          <% end %>
+        </li>
+      <% end %>
+        <% if current_employee.occupation == 'admin' || current_employee.occupation == 'clerk' %>
+        <li class="nav-item">
+          <%= link_to orders_path, class:"nav-link" do %>
+            <i class="nav-icon fas fa-th"></i>
+            <p>
+              Pedido
             </p>
           <% end %>
         </li>
