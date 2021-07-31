@@ -1,10 +1,15 @@
 class OrdersController < ApplicationController
   before_action :set_orders, only: %i[edit update destroy change_situation]
+
   def index
     @orders = Order.order(id: :asc)
+    @categories = Category.all
+    @orders_status = Order.where.not(situation: 'cancelled').order(situation: :asc).order(id: :asc)
+    @orders_employees = Order.where(employee_id: current_employee).order(situation: :asc).order(id: :asc)
   end
 
   def new
+    @categories = Category.all
     @order = Order.new
   end
 
@@ -59,6 +64,6 @@ class OrdersController < ApplicationController
 
   def orders_params
     params.require(:order).permit(:client_name, :table_number, :situation, :employee_id,
-                                  product_orders_attributes: %i[id quantitie note product_id order_id _destroy])
+                                  product_orders_attributes: %i[quantitie note product_id _destroy])
   end
 end

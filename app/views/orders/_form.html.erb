@@ -1,0 +1,133 @@
+<div class="container logo-order text-center">
+  <%= image_tag 'logo.jpeg', class:"img-fluid" %>
+</div>
+<div class="container order">
+  <div class="container-fluid">
+    <%= form_with model: @order, local: true do |f| %>
+      <%= f.hidden_field :employee_id, value: current_employee.id %>
+      <%= f.hidden_field :situation, value: 'queue' %>
+      <div class="container">
+        <div class="row">
+          <div class="form-group col-md-8">
+            <%= f.label :client_name %>
+            <%= f.text_field :client_name, class: "form-control" %>
+          </div>
+          <div class="form-group col-md-4">
+            <%= f.label :table_number %>
+            <%= f.number_field :table_number, min: 0, class: "form-control" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="table-responsive">
+            <table id="myTable" class="table">
+              <thead>
+                <tr>
+                  <th>Produto</th>
+                  <th>Nome</th>
+                  <th>Descrição</th>
+                  <th>Qtd</th>
+                  <th>Observação</th>
+                  <th>Preço</th>
+                  <th class="text-right"><span id="amount" class="amount">Total</span> </th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @categories.each do |category| %>
+                  <% unless category.products.blank? %>
+                    <thead>
+                      <tr>
+                        <th colspan="8" class="text-center">
+                          <p><%= category.description %></p>
+                        </th>
+                      </tr>
+                    </thead>
+                  <% end %>
+                  <% category&.products.each do |product| %>
+                    <%= f.fields_for :product_orders, ProductOrder.new  do |ff|%>
+                      <%= ff.hidden_field :order_id, value: current_order.id %>
+                      <%= ff.hidden_field :product_id, value: product.id %>
+                      <tr>
+                        <th scope="row">                      
+                          <div class="product-img">
+                            <div class="img-prdct"><img src="https://image.flaticon.com/icons/png/512/3144/3144467.png"></div>
+                          </div>
+                        </th>
+                        <td><%= product.name %></td>
+                        <td><%= product.description %></td>
+                        <td>
+                          <div class="button-container">
+                            <%= ff.number_field :quantitie, min: 0, class: "qty form-control" %>
+                          </div>
+                        </td>
+                        <td><%= ff.text_field :note, class: "form-control" %></td>
+                        <td>
+                          <input type="text" value="<%= product.price %>" class="price form-control" disabled>
+                        </td>
+                        <td align="right">R$ <span id="amount" class="amount">0</span></td>
+                      </tr>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="5"></td>
+                  <td align="right"><strong>TOTAL = R$:  <span id="total" class="total">0</span></strong></td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+        <div class="text-center">
+          <%= f.submit class: "btn btn-success", data: { disable_with: "Criando....⌛" } %>
+          <%= link_to "Cancelar", orders_path, class: "btn btn-danger ml-1" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <script>
+    // -----------------for-Shopping-cart-------------
+    $(document).ready(function(){
+      	update_amounts();
+      	$('.qty, .price').on('keyup keypress blur change', function(e) {
+    	  	update_amounts();
+      	});
+    });
+    function update_amounts(){
+    	var sum = 0.0;
+    	  	$('#myTable > tbody  > tr').each(function() {
+    			var qty = $(this).find('.qty').val();
+    		  	var price = $(this).find('.price').val();
+    		  	var amount = (qty*price)
+    		  	sum+=amount;
+    		  	$(this).find('.amount').text(''+amount);
+    	  	});
+    	$('.total').text(sum);
+    }
+    
+    
+    
+    //----------------for quantity-increment-or-decrement-------
+    var incrementQty;
+    var decrementQty;
+    var plusBtn  = $(".cart-qty-plus");
+    var minusBtn = $(".cart-qty-minus");
+    var incrementQty = plusBtn.click(function() {
+    	var $n = $(this)
+    		.parent(".button-container")
+    		.find(".qty");
+    	$n.val(Number($n.val())+1 );
+    	update_amounts();
+    });
+    
+    var decrementQty = minusBtn.click(function() {
+    		var $n = $(this)
+    		.parent(".button-container")
+    		.find(".qty");
+    	var QtyVal = Number($n.val());
+    	if (QtyVal > 0) {
+    		$n.val(QtyVal-1);
+    	}
+    	update_amounts();
+    });
+  </script>

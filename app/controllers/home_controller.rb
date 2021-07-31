@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
   def index
-    flash.now[:error] = "Teste Alert"
+    @categories = Category.all
+    @products = Product.all
+    @product_orders = current_order.product_orders.new
   end
 end
