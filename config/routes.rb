@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   namespace :dashboard do
     resources :categories
     resources :employees
+    resources :products
   end
 
   resources :orders do

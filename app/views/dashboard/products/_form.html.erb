@@ -1,0 +1,40 @@
+<%= form_with model: [:dashboard, @product], local: true do |f| %>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputEmail4">Nome</label>
+        <%= f.text_field :name, type:"text", class:"form-control", placeholder:"Nome" %>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputEmail4">Descrição</label>
+        <%= f.text_field :description, type:"text", class:"form-control", placeholder:"Descrição" %>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputEmail4">Preço</label>
+          <%= f.number_field :price, value: @product.price ? '%.2f' % @product.price : nil, min: 0, step: 0.01, class:"form-control", placeholder:"Preço"  %>
+      </div>
+      <div class="form-group col-md-6">
+          <%= f.label :status %><br />
+          <%= f.select :status, options_for_select(Product.statuses.map { |key, value| [key.humanize, key] },  :selected =>  @product.status, class:"form-control") %>
+      </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+          <%= f.label :image %>
+          <%= f.file_field :image, class:"form-control" %>
+        </div>
+        <div class="form-group col-md-3">
+          <% if @product.image.attached? %>
+            <%= image_tag @product.image, style: "width: 200px; display: block;" %>
+        <% end %>
+    </div>
+    <div class="form-row1">
+        <div class="form-group col-md-6">
+          <%= f.label :category %><br />
+          <%= f.collection_select :category_id,  Category.all, :id, :description , prompt: true%>
+        </div>
+    </div>
+    <div class="offset-md-5">
+      <%= f.submit class:"btn btn-success" %>
+      <%= link_to "Cancelar", dashboard_products_path, class:"btn btn-danger" %>
+    </div>
+<% end %>

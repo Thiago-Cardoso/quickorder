@@ -23,5 +23,10 @@ class Order < ApplicationRecord
   def set_subtotal
     self[:subtotal] = subtotal
   end
-  
+
+  scope :queue, ->{ where(situation: 0)}
+  scope :progress, ->{ where(situation: 1)}
+  scope :concluded, ->{ where(situation: 2)}
+  scope :canceled, ->{ where(situation: 3)}
+
 end
