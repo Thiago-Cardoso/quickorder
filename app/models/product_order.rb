@@ -30,6 +30,6 @@ class ProductOrder < ApplicationRecord
   end
 
   def set_total
-    self[:total] = total * quantitie
+    self[:total] = unit_price * quantitie
   end
 end

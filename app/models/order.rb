@@ -10,6 +10,7 @@ class Order < ApplicationRecord
   validates :client_name, presence: true
   validates :table_number, presence: true
   validates :situation, presence: true
+  before_save :set_total
 
   # Enumerate
   enum situation: { 'queue': 0, 'progress': 1, 'done': 2, 'cancelled': 3 }
@@ -22,6 +23,10 @@ class Order < ApplicationRecord
 
   def set_subtotal
     self[:subtotal] = subtotal
+  end
+
+  def set_total
+    self[:total] = subtotal
   end
 
   scope :queue, ->{ where(situation: 0)}
