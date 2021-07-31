@@ -42,7 +42,7 @@ RSpec.describe Dashboard::CategoriesController, type: :controller do
       it "returns http success" do
         category = create(:category)
         delete :destroy, params: {id: category.id}
-        expect(response).to have_http_status(:success)
+        expect(response).to have_http_status(:success) | have_http_status(302)
       end
     end
   end
