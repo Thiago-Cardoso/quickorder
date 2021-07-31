@@ -2,7 +2,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
   <%= link_to dashboard_path, class:"brand-link" do %>
-  <%= image_tag 'restro-theme_logo.png', alt:"Logo", class:"brand-image img-fluid", style:"opacity: .8" %>
+  <%= image_tag 'logo.png', alt:"Logo", class:"brand-image img-fluid", style:"width: 25%" %>
 <% end %>
 <div class="sidebar">
   <div class="user-panel mt-4 pb-3 mb-3 d-flex">
@@ -18,30 +18,41 @@
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
       <li class="nav-item menu-open">
         <%= link_to dashboard_path, class:"nav-link active" do %>
-          <i class="nav-icon fas fa-tachometer-alt"></i>
+          <i class="fas fa-desktop"></i>
           <p>
             Dashboard
           </p>
         <% end %>
       </li>
-      <li class="nav-item">
-        <%= link_to dashboard_categories_path, class:"nav-link" do %>
-          <i class="nav-icon fas fa-th"></i>
-          <p>
-            Categoria
-          </p>
-        <% end %>
-      </li>
+      <% if current_employee.occupation == 'admin' %>
         <li class="nav-item">
-        <%= link_to dashboard_employees_path, class:"nav-link" do %>
-          <i class="nav-icon fas fa-th"></i>
-          <p>
-            Usuários
-          </p>
+          <%= link_to dashboard_categories_path, class:"nav-link" do %>
+            <i class="nav-icon fas fa-th"></i>
+            <p>
+              Categoria
+            </p>
+          <% end %>
+        </li>
+        </li>
+        <li class="nav-item">
+        <%= link_to dashboard_products_path, class:"nav-link" do %>
+            <i class="nav-icon fas fa-th"></i>
+            <p>
+              Produto
+            </p>
         <% end %>
-      </li>
+        </li>
+          <li class="nav-item">
+          <%= link_to dashboard_employees_path, class:"nav-link" do %>
+            <i class="fas fa-users"></i>
+            <p>
+              Usuários
+            </p>
+          <% end %>
+        </li>
+      <% end %>
       <li class="nav-item">
-            <a rel="nofollow" data-method="delete" class="nav-link" href="/employees/sign_out">Sair</a>
+          <a rel="nofollow" data-method="delete" class="nav-link" href="/employees/sign_out">Sair</a>
       </li>
     </ul>
   </nav>
