@@ -22,6 +22,8 @@ services:
     volumes:
       - .:/quickorder
       - app-gems:/app-gems
+    stdin_open: true
+    tty: true
     # env_file:
     #   - ".env"
 
