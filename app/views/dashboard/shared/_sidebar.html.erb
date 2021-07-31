@@ -18,7 +18,7 @@
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
       <li class="nav-item menu-open">
         <%= link_to dashboard_path, class:"nav-link active" do %>
-          <i class="fas fa-users-cog"></i>
+          <i class="fas fa-desktop"></i>
           <p>
             Dashboard
           </p>
@@ -27,7 +27,7 @@
       <% if current_employee.occupation == 'admin' %>
         <li class="nav-item">
           <%= link_to dashboard_categories_path, class:"nav-link" do %>
-            <i class="nav-icon fas fa-th"></i>
+            <i class="fas fa-utensils"></i>
             <p>
               Categoria
             </p>
@@ -35,7 +35,7 @@
         </li>
           <li class="nav-item">
           <%= link_to dashboard_employees_path, class:"nav-link" do %>
-            <i class="nav-icon fas fa-th"></i>
+            <i class="fas fa-users"></i>
             <p>
               Usuários
             </p>

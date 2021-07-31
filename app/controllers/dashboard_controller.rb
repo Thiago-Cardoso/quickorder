@@ -7,8 +7,19 @@ class DashboardController < ApplicationController
       info_users
     end
 
-    # @sum_orders = ProductOrder.joins('inner join products on products.id = product_orders.product_id').sum(:price).round(2), 
-    # depois só passar um where created_at pra fazer o filtro
+    if params[:initial_date].present? && params[:final_date].present?
+      initial_date = DataTime.parse(params[:initial_date]).beginning_of_day
+      final_date = DataTime.parse(params[:final_date]).end_of_day
+      @orders = Order.all.where("creation_date >= '#{inicial_date.strftime("%Y-%m-%d %H:%M:%S")}'")
+      @orders = Order.all.where("creation_date >= '#{final_date.strftime("%Y-%m-%d %H:%M:%S")}'")
+    elsif params[:initial_date].present? && params[:final_date].blank?
+      initial_date = DataTime.parse(params[:initial_date]).beginning_of_day
+      @orders = Order.all.where("creation_date >= '#{inicial_date.strftime("%Y-%m-%d %H:%M:%S")}'")
+    elsif params[:initial_date].blank? && params[:final_date].present?
+      final_date = DataTime.parse(params[:final_date]).end_of_day
+      @orders = Order.all.where("creation_date >= '#{final_date.strftime("%Y-%m-%d %H:%M:%S")}'")
+    end
+    # @sum_orders = ProductOrder.joins('inner join products on products.id = product_orders.product_id').sum(:price).round(2)
   end
 
   def info_admin
