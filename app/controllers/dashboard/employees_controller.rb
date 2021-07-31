@@ -58,7 +58,6 @@ class Dashboard::EmployeesController < DashboardController
     params.require(:employee).permit(:name, :email, :status, :occupation, :password, :password_confirmation)
   end
 
-  # remove o input da validação do devise
   def allow_without_password
     if params[:employee][:password].blank? && params[:employee][:password_confirmation].blank?
       params[:employee].delete(:password)

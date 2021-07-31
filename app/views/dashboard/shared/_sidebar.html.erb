@@ -10,7 +10,8 @@
       <%= image_tag 'user.png', class:"img-circle", alt:"User" %>
     </div>
     <div class="info">
-      <a href="#" class="d-block">Alexander Pierce</a>
+         <%= link_to "Perfil", edit_dashboard_employee_path(current_employee.id) %> <br />
+         <%= current_employee.name %>
     </div>
   </div>
   <nav class="mt-2">

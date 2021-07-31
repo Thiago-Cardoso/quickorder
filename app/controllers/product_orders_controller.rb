@@ -1,5 +1,6 @@
 class ProductOrdersController < ApplicationController
   before_action :set_order
+  load_and_authorize_resource param_method: :order_params
 
   def create
     @product_order = @order.product_orders.new(order_params)

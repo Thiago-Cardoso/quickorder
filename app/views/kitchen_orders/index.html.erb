@@ -1,0 +1,99 @@
+<div class="wrapper">
+    <div>
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-11">
+          <h1>Pedidos na Cozinha</h1>
+        </div>
+        <div class="col-sm-1">
+          <a rel="nofollow" data-method="delete" class="btn btn-sm btn-primary" href="/employees/sign_out"><i class="fas fa-door-open"></i> Sair</a>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+  <!-- Main content -->
+  <section class="content">
+    <!-- Default box -->
+    <div class="card card-solid">
+      <div class="card-body pb-0">
+        <div class="row">
+          <%  @orders.each do |order| %>
+            <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+              <div id="card_<%=order.id%>", class="card bg-light d-flex flex-fill">
+                <div class="card-header text-muted <%= order.queue? ? "bg-secondary" : "bg-success" %>">
+                  #<%= order.id %>
+                </div>
+                <div class="card-body pt-1">
+                  <div class="row">
+                    <div class="col-6">
+                      <h2 class="lead"><b><%= order.client_name %></b></h2>
+                    </div >
+                    <div class="col-6">
+                        <h2 class="lead"><b><%= order.table_number %></b></h2>
+                    </div >
+                  </div>
+                  <div class="row">
+                    <div class="col-12 mb-3">
+                      <div class="card">
+                        <div class="card-header">
+                          <h3 class="card-title">Itens</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body p-0">
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th>Produto</th>
+                                <th style="width: 10px text-center">Qtd</th>
+                                <th>Observação</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <% order.product_orders.each do |product_order| %>
+                                <tr>
+                                  <td><%= product_order.product.name %></td>
+                                  <td style="align-center"><%= product_order.quantitie %></td>
+                                  <td><%= product_order.note %></td>
+                                </tr>
+                              <% end %>
+                            </tbody>
+                          </table>
+                        </div>
+                          <!-- /.card-body -->
+                      </div>
+                        <!-- /.card -->
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div class="text-right">
+                    <%= link_to change_situation_order_path(order, situation: 3), class:"btn btn-sm btn-danger", data: { confirm: "Tem certeza que deseja cancelar o pedido?" }, remote: true do %>
+                      <i class="fas fa-times"></i> Cancelar
+                    <% end %>
+                    <% if order.queue? %>
+                      <%= link_to change_situation_order_path(order, situation: 1), class:"btn btn-sm btn-primary", id:"change_situation_#{order.id}", remote: true do %>
+                        <i class="fas fa-mortar-pestle"></i> Preparar
+                      <% end %>
+                    <% else %>
+                      <%= link_to change_situation_order_path(order, situation: 2), class:"btn btn-sm btn-primary", id:"change_situation_#{order.id}", remote: true do %>
+                        <i class="fas fa-concierge-bell"></i> Finalizado
+                      <% end %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <!-- /.card -->
+
+  </section>
+  <!-- /.content -->
+  </div>
+</div>
+
+<%= javascript_pack_tag 'kitchenOrders' %>
