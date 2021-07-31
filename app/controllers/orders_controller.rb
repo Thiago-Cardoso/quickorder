@@ -1,11 +1,13 @@
 class OrdersController < ApplicationController
   before_action :set_orders, only: %i[edit update destroy change_situation]
+
   def index
     @orders = Order.order(id: :asc)
     @categories = Category.all
   end
 
   def new
+    @categories = Category.all
     @order = Order.new
   end
 
@@ -47,7 +49,10 @@ class OrdersController < ApplicationController
   private
 
   def save_order!
-    @order.save!
+    @orders = @order.product_orders.select { |order_item| order_item.quantitie != nil }
+    @orders.each do |order|
+      order.save!
+    end
   end
 
   def alert_errors

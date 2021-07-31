@@ -9,6 +9,7 @@ class ProductOrder < ApplicationRecord
   validates :quantitie, presence: true
 
   def unit_price
+    # If there is a record
     if persisted?
       self[:unit_price]
     else
@@ -19,6 +20,8 @@ class ProductOrder < ApplicationRecord
   def total
     unit_price * quantitie
   end
+
+
 
   private
 

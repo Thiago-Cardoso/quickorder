@@ -15,15 +15,13 @@ class Order < ApplicationRecord
   enum situation: { 'queue': 0, 'progress': 1, 'done': 2, 'cancelled': 3 }
 
   def subtotal
-    product_orders.collect do |product_order|
-      product_order.valid? ? product_order.unit_price * product_order.quantitie : 0
-    end.sum
+    product_orders.collect { |order_item| order_item.valid? ? order_item.unit_price * order_item.quantitie : 0 }.sum
   end
 
   private
 
   def set_subtotal
-    self[subtotal] = subtotal
+    self[:subtotal] = subtotal
   end
   
 end

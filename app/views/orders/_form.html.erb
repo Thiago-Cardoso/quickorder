@@ -2,6 +2,61 @@
   body {
     background: #bdc3c7;
   }
+  
+  i {
+  	margin-right: 10px;
+  }
+  
+  /*------------------------*/
+  input:focus,
+  button:focus,
+  .form-control:focus{
+  	outline: none;
+  	box-shadow: none;
+  }
+  .form-control:disabled, .form-control[readonly]{
+  	background-color: #fff;
+  }
+  .table tr,
+  .table tr td{
+  	vertical-align: middle;
+  }
+  .button-container{
+  	display: flex;
+  	align-items: center;
+  }
+  .button-container .form-control{
+  	max-width: 80px;
+  	text-align: center;
+  	display: inline-block;
+  	margin: 0px 5px;
+  }
+  #myTable .form-control{
+  	width: auto;
+  	display: inline-block;
+  }
+  .cart-qty-plus,
+  .cart-qty-minus{
+  	width: 38px;
+  	height: 38px;
+  	background-color: #fff;
+  	border: 1px solid #ced4da;
+    border-radius: .25rem;
+  }
+  .cart-qty-plus:hover,
+  .cart-qty-minus:hover{
+  	background-color: #5161ce;
+  	color: #fff;
+  }
+  .img-prdct{
+  	width: 50px;
+  	height: 50px;
+  /* 	background-color: #5161ce; */
+  	border-radius: 4px;
+  }
+  .img-prdct img{
+  width: 100%;
+  }
 </style>
 <div class="container logo-order text-center">
   <%= image_tag 'logo.jpeg', class:"img-fluid" %>
@@ -26,16 +81,116 @@
           </div>
         </div>
         <div class="row">
-          <%= f.fields_for :product_orders do |product_orders_form| %>
-            <%= render "product_order_fields", f: product_orders_form %>
-          <% end %>
-          <%= link_to_add_fields "Adicionar Produto", f, :product_orders %>
+          <div class="table-responsive">
+            <table id="myTable" class="table">
+              <thead>
+                <tr>
+                  <th>Produto</th>
+                  <th>Nome</th>
+                  <th>Descrição</th>
+                  <th>Qtd</th>
+                  <th>Observação</th>
+                  <th>Preço</th>
+                  <th class="text-right"><span id="amount" class="amount">Total</span> </th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @categories.each do |category| %>
+                  <% unless category.products.blank? %>
+                    <strong><%= category&.description&.upcase %></strong>
+                  <% end %>
+                  <% category&.products.each do |product| %>
+                    <%= f.fields_for :product_orders, ProductOrder.new  do |ff|%>
+                      <%= ff.hidden_field :order_id, value: current_order.id %>
+                      <%= ff.hidden_field :product_id, value: product.id %>
+                      <tr>
+                        <td>
+                          <div class="product-img">
+                            <div class="img-prdct"><img src="https://image.flaticon.com/icons/png/512/3144/3144467.png"></div>
+                          </div>
+                        </td>
+                        <td>
+                          <p><%= product.name %></p>
+                        </td>
+                        <td>
+                          <p><%= product.description %></p>
+                        </td>
+                        <td>
+                          <div class="button-container">
+                            <%= ff.number_field :quantitie, class: "qty form-control" %>
+                          </div>
+                        </td>
+                        <td>
+                          <%= ff.text_field :note, class: "form-control" %>
+                        </td>
+                        <td>
+                          <input type="text" value="<%= product.price %>" class="price form-control" disabled>
+                        </td>
+                        <td align="right">R$ <span id="amount" class="amount">0</span></td>
+                      </tr>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="7"></td>
+                  <td align="right"><strong>TOTAL = R$:  <span id="total" class="total">0</span></strong></td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
         </div>
-      </div>
-      <div class="text-center">
-        <%= f.submit class: "btn btn-success", data: { disable_with: "Criando....⌛" } %>
-        <%= link_to "Cancelar", orders_path, class: "btn btn-danger ml-1" %>
-      </div>
-    <% end %>
+        <div class="text-center">
+          <%= f.submit class: "btn btn-success", data: { disable_with: "Criando....⌛" } %>
+          <%= link_to "Cancelar", orders_path, class: "btn btn-danger ml-1" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-</div>
+  <script>
+    // -----------------for-Shopping-cart-------------
+    $(document).ready(function(){
+      	update_amounts();
+      	$('.qty, .price').on('keyup keypress blur change', function(e) {
+    	  	update_amounts();
+      	});
+    });
+    function update_amounts(){
+    	var sum = 0.0;
+    	  	$('#myTable > tbody  > tr').each(function() {
+    			var qty = $(this).find('.qty').val();
+    		  	var price = $(this).find('.price').val();
+    		  	var amount = (qty*price)
+    		  	sum+=amount;
+    		  	$(this).find('.amount').text(''+amount);
+    	  	});
+    	$('.total').text(sum);
+    }
+    
+    
+    
+    //----------------for quantity-increment-or-decrement-------
+    var incrementQty;
+    var decrementQty;
+    var plusBtn  = $(".cart-qty-plus");
+    var minusBtn = $(".cart-qty-minus");
+    var incrementQty = plusBtn.click(function() {
+    	var $n = $(this)
+    		.parent(".button-container")
+    		.find(".qty");
+    	$n.val(Number($n.val())+1 );
+    	update_amounts();
+    });
+    
+    var decrementQty = minusBtn.click(function() {
+    		var $n = $(this)
+    		.parent(".button-container")
+    		.find(".qty");
+    	var QtyVal = Number($n.val());
+    	if (QtyVal > 0) {
+    		$n.val(QtyVal-1);
+    	}
+    	update_amounts();
+    });
+  </script>
