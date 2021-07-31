@@ -1,14 +1,12 @@
 require 'rails_helper'
 
-RSpec.describe Dashboard::ProductsController, type: :controller do
+RSpec.describe Dashboard::EmployeesController, type: :controller do
 
   include Devise::Test::ControllerHelpers
 
   before(:each) do
     @request.env["devise.mapping"] = Devise.mappings[:employee]
     @current_employee = FactoryBot.create(:employee)
-    @product = FactoryBot.create(:product)
-    @category = FactoryBot.create(:category)
     sign_in @current_employee
   end
 
@@ -24,15 +22,13 @@ RSpec.describe Dashboard::ProductsController, type: :controller do
 
   describe "POST #create" do
     before(:each) do
-      post :create, params: { product: { name: @product.name,
-         description: @product.description,
-         price: @product.price,
-         category_id: @category.id } }
+      @employees = attributes_for(:employee)
+      post :create, params: {employee: @employees}
     end
 
-    it "Redirect to new products" do
+    it "Redirect to new employee" do
       expect(response).to have_http_status(302)
-      expect(response).to redirect_to("/dashboard/products")
+      expect(response).to redirect_to("/dashboard/employees")
     end
   end
 
@@ -41,10 +37,10 @@ RSpec.describe Dashboard::ProductsController, type: :controller do
       request.env["HTTP_ACCEPT"] = 'application/json'
     end
 
-    context "Destroy products" do
+    context "Destroy employees" do
       it "returns http success" do
-        product = create(:product)
-        delete :destroy, params: {id: product.id}
+        employee = create(:employee)
+        delete :destroy, params: {id: employee.id}
         expect(response).to have_http_status(:success) | have_http_status(302)
       end
     end
@@ -52,14 +48,14 @@ RSpec.describe Dashboard::ProductsController, type: :controller do
 
   describe "PUT #update" do
     before(:each) do
-      @new_product_attributes = attributes_for(:product)
+      @new_employee_attributes = attributes_for(:employee)
       request.env["HTTP_ACCEPT"] = 'application/json'
     end
 
-    context "updates the requested products" do
+    context "updates the requested employee" do
       before(:each) do
-        product = create(:product)
-        put :update, params: {id: product.id, product: @new_product_attributes}
+        employee = create(:employee)
+        put :update, params: {id: employee.id, employee: @new_employee_attributes}
         expect(response).to have_http_status(:success)
       end
     end
