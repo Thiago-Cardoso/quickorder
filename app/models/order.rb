@@ -10,5 +10,11 @@ class Order < ApplicationRecord
   validates :situation, presence: true
 
   # Enumerate
-  enum situation: { 'queue': 0, 'progress': 1, 'done': 2, 'cancelled': 3 }
+  enum situation: { queue: 0, progress: 1, concluded: 2, canceled: 3 }
+
+  scope :queue, ->{ where(situation: 0)}
+  scope :progress, ->{ where(situation: 1)}
+  scope :concluded, ->{ where(situation: 2)}
+  scope :canceled, ->{ where(situation: 3)}
+
 end
