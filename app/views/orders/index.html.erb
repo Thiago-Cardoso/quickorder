@@ -10,7 +10,8 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-12 col-sm-12 col-md-4">
-        <a href="" data-toggle="modal" data-target="#orderModal">
+          <%= link_to new_order_path, remote: true, 
+                                             data:{toggle:"modal", target:"#newOrderModal"} do %>
           <div class="info-box mb-3">
             <span class="info-box-icon bg-success elevation-1"><i class="fas fa-cart-plus"></i>
               <div class="info-box-content">
@@ -18,7 +19,7 @@
               </div>
             </span>
           </div>
-        </a>
+        <% end %>
       </div>
       <div class="clearfix hidden-md-up"></div>
       <div class="col-12 col-sm-12 col-md-4">
@@ -46,9 +47,23 @@
     </div>
   </div>
 </div>
-  <%= render 'modal_order'%>
   <%= render 'modal_follow'%>
   <%= render 'modal_historic' %>
 <footer class="text-center text-green mt-5 p-5">
   Versão 1.0.0
 </footer>
+<!-- Modal -->
+<div class="modal fade" id="newOrderModal" tabindex="-1" aria-labelledby="newOrderModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Novo Pedido</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div id="newOrderForm">
+      </div>
+    </div>
+  </div>
+</div>

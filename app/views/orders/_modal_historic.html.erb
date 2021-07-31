@@ -9,7 +9,35 @@
         </button>
       </div>
       <div class="modal-body">
-        ...
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <% @orders_employees.to_a.group_by { |x| x.situation.upcase }.each do |order| %>
+              <thead>
+                <tr>
+                  <th colspan="8" class="text-center" style="border-top: none;">
+                    <p><%= order.first %></p>
+                  </th>
+                </tr>
+              </thead>
+              <thead>
+                <tr>
+                  <th scope="col">Pedido</th>
+                  <th scope="col">Cliente</th>
+                  <th scope="col">Mesa</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% order.second.each do |order| %>
+                  <tr>
+                    <th scope="row"><%= order.id %></th>
+                    <td><%= order.client_name %></td>
+                    <td><%= order.table_number %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            <% end %>
+          </table>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>

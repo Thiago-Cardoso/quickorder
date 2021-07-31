@@ -4,6 +4,8 @@ class OrdersController < ApplicationController
   def index
     @orders = Order.order(id: :asc)
     @categories = Category.all
+    @orders_status = Order.where.not(situation: 'cancelled').order(situation: :asc).order(id: :asc)
+    @orders_employees = Order.where(employee_id: current_employee).order(situation: :asc).order(id: :asc)
   end
 
   def new

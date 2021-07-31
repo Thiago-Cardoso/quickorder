@@ -6,7 +6,7 @@ class ProductOrder < ApplicationRecord
   before_save :set_total
 
   # Validates
-  validates :quantitie, presence: true
+  #validates :quantitie, presence: true
 
   def unit_price
     # If there is a record
