@@ -21,6 +21,7 @@
               <th scope="col">Id</th>
               <th scope="col">Name</th>
               <th scope="col">Email</th>
+              <th scope="col">Status</th>
               <th scope="col">Ocupação</th>
               <th scope="col">Ações</th>
             </tr>
@@ -31,6 +32,7 @@
                 <th scope="row"><%= employee.id %></th>
                 <td><%= employee.name %></td>
                 <td><%= employee.email %></td>
+                <td><%= Employee.human_enum_name(:status, employee.status) %></td>
                 <td><%= Employee.human_enum_name(:occupation, employee.occupation) %></td>
                 <td>
                   <%= link_to edit_dashboard_employee_path(employee), remote: true, class:"btn bg-info btn-sm",
