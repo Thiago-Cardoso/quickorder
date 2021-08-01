@@ -16,7 +16,7 @@ class OrdersController < ApplicationController
   def edit; end
 
   def create
-    if clean_orders
+    if clean_orders && @order.total > 0
       redirect_to orders_path, notice: "Pedido #{@order.id} realizado com sucesso!"
     else
       alert_errors
@@ -57,7 +57,12 @@ class OrdersController < ApplicationController
 
 
   def alert_errors
-    redirect_to orders_path, alert: @order.errors.full_messages.to_sentence
+    if @order.total > 0
+      redirect_to orders_path, alert: @order.errors.full_messages.to_sentence
+    else
+      flash[:error] = "Selecione ao menos um produto"
+      redirect_to orders_path
+    end
   end
 
   def set_orders
