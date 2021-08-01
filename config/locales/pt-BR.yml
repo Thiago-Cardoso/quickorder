@@ -12,6 +12,8 @@ pt-BR:
       employee:
         name: Nome
         email: e-mail
+        status: Situação
+        occupation: Ocupação
         occupations:
           admin: Administrador
           clerk: Garçon
@@ -25,8 +27,8 @@ pt-BR:
         situations:
           queue: Na fila
           progress: Em Andamento
-          concluded: Concluido
-          canceled: Cancelado
+          done: Concluido
+          cancelled: Cancelado
         subtotal: Sub. Total
         total: Total
         employee: Funcionário
