@@ -15,7 +15,7 @@
               <thead>
                 <tr>
                   <th colspan="8" class="text-center" style="border-top: none;">
-                    <p><%= order.first %></p>
+                    <p><%= Order.human_enum_name(:situation, order.first.downcase) %></p>
                   </th>
                 </tr>
               </thead>
