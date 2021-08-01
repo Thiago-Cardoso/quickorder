@@ -23,7 +23,8 @@
             <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
               <div id="card_<%=order.id%>", class="card bg-light d-flex flex-fill">
                 <div class="card-header text-muted <%= order.queue? ? "bg-secondary" : "bg-success" %>">
-                  #<%= order.id %>
+                  <%= order.id %> - 
+                  <%= Order.human_enum_name(:situation, order.situation)  %>
                 </div>
                 <div class="card-body pt-1">
                   <div class="row">
