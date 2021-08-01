@@ -2,13 +2,13 @@
 <div class="modal fade" id="followModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="followModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header dark-footer">
         <h5 class="modal-title" id="staticBackdropLabel">Pedidos em Andamento</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body dark-bg">
         <div class="table-responsive">
           <table class="table table-hover">
             <% @orders_status.to_a.group_by { |x| x.situation.upcase }.each do |order| %>
@@ -41,7 +41,7 @@
           </table>
         </div>
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer dark-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
       </div>
     </div>

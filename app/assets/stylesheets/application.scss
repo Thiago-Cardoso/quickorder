@@ -13,3 +13,33 @@
  *= require_tree .
  *= require_self
  */
+ @import "login";
+
+.dark-bg{
+  background: #454D55;
+  color:white;
+}
+
+
+.dark-footer{
+  background: #343A40;
+  color:white;
+}
+ .select2-container .select2-selection--single {
+    padding: 10px 0 25px 0 !important;
+  }
+  
+  .select2-container--default .select2-selection--single {
+    color: rgb(255, 255, 255);
+    background-color: #343a40;
+  }
+  
+  .select2-container .select2-selection--single .select2-selection__rendered {
+    color: rgb(255, 255, 255);
+    line-height: 20px;
+  }
+  
+  .select2-selection__arrow {
+    color: rgb(255, 255, 255);
+    background-color: #343a40;
+  }

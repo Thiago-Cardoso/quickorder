@@ -4,11 +4,12 @@
   <section class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
-        <div class="col-sm-11">
+        <div class="col-sm-10">
           <h1>Pedidos na Cozinha</h1>
         </div>
-        <div class="col-sm-1">
-          <a rel="nofollow" data-method="delete" class="btn btn-sm btn-primary" href="/employees/sign_out"><i class="fas fa-door-open"></i> Sair</a>
+        <div class="col-sm-2">
+          <a class="btn btn-sm btn-primary m-3" href="/"><i class="fas fa-undo-alt"></i> Voltar</a>
+          <a rel="nofollow" data-method="delete" class="btn btn-sm btn-danger" href="/employees/sign_out"><i class="fas fa-door-open"></i> Sair</a>
         </div>
       </div>
     </div><!-- /.container-fluid -->
@@ -17,16 +18,16 @@
   <section class="content">
     <!-- Default box -->
     <div class="card card-solid">
-      <div class="card-body pb-0">
+      <div class="card-body">
         <div class="row">
           <%  @orders.each do |order| %>
             <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
               <div id="card_<%=order.id%>", class="card bg-light d-flex flex-fill">
-                <div class="card-header text-muted <%= order.queue? ? "bg-secondary" : "bg-success" %>">
+                <div class="card-header text-muted <%= order.queue? ? "bg-warning" : "bg-info" %>">
                   <%= order.id %> - 
                   <%= Order.human_enum_name(:situation, order.situation)  %>
                 </div>
-                <div class="card-body pt-1">
+                <div class="card-body pt-2">
                   <div class="row">
                     <div class="col-6">
                       <h2 class="lead"><b><%= order.client_name %></b></h2>
@@ -78,8 +79,8 @@
                         <i class="fas fa-mortar-pestle"></i> Preparar
                       <% end %>
                     <% else %>
-                      <%= link_to change_situation_order_path(order, situation: 2), class:"btn btn-sm btn-primary", id:"change_situation_#{order.id}", remote: true do %>
-                        <i class="fas fa-concierge-bell"></i> Finalizado
+                      <%= link_to change_situation_order_path(order, situation: 2), class:"btn btn-sm btn-success", id:"change_situation_#{order.id}", remote: true do %>
+                        <i class="fas fa-concierge-bell"></i> Concluído
                       <% end %>
                     <% end %>
                   </div>
@@ -91,7 +92,6 @@
       </div>
     </div>
     <!-- /.card -->
-
   </section>
   <!-- /.content -->
   </div>
