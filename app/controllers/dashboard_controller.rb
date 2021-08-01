@@ -24,17 +24,21 @@ class DashboardController < ApplicationController
 
   def info_admin
     @orders = Order.all
+    @orders_status = Order.where.not(situation: 'cancelled').order(situation: :asc).order(id: :asc)
     @orders_queue = Order.queue
     @orders_progress = Order.progress
     @orders_concluded = Order.concluded
     @orders_canceled = Order.canceled
+    @sum_order = Order.sum(:total)
   end
 
   def info_users
     @orders = Order.all.where(employee_id: current_employee)
+    @orders_status = Order.where(employee_id: current_employee).where.not(situation: 'cancelled').order(situation: :asc).order(id: :asc)
     @orders_queue = Order.queue.where(employee_id: current_employee)
     @orders_progress = Order.progress.where(employee_id: current_employee)
     @orders_concluded = Order.concluded.where(employee_id: current_employee)
     @orders_canceled = Order.canceled.where(employee_id: current_employee)
+    @sum_order = Order.where(employee_id: current_employee).sum(:total)
   end
 end
