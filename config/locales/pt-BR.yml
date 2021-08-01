@@ -1,9 +1,24 @@
 pt-BR:
   activerecord:
     models:
+      category: Categoria
+      employee: Usuários
       order: Pedido
+      product: Produto
       product_orders: Produtos do Pedido
     attributes:
+      category:
+        description: Descrição
+      employee:
+        name: Nome
+        email: e-mail
+        occupations:
+          admin: Administrador
+          clerk: Garçon
+          cooker: Cozinheiro
+        statuses:
+          active: Ativo
+          inactive: Inativo
       order:
         client_name: Cliente
         table_number: Mesa
@@ -12,18 +27,25 @@ pt-BR:
           progress: Em Andamento
           concluded: Concluido
           canceled: Cancelado
-      employee:
-        occupations:
-          admin: Administrador
-          clerk: Garçon
-          cooker: Cozinheiro
-        statuses:
-          active: Ativo
-          inactive: Inativo
+        subtotal: Sub. Total
+        total: Total
+        employee: Funcionário
       product:
+        name: Nome
+        description: Descrição
+        price: Preço
+        available: Disponível
+        category: Categoria
         statuses:
           active: Ativo
           inactive: Inativo
+      product_orders:
+        product: Produto
+        order: Pedido
+        quantitie: Quantidade
+        note: Anotação
+        unit_price: Preço unitário
+        total: Total
     errors:
       messages:
         record_invalid: 'A validação falhou: %{errors}'
