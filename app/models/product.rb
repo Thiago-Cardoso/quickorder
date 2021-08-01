@@ -9,5 +9,5 @@ class Product < ApplicationRecord
   validates :description, presence: true
   validates :price, presence: true
 
-  enum status: { active: 1, inactive: 0 }
+  enum status: { active: 0, inactive: 1 }
 end
