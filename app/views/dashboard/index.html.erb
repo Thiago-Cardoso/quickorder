@@ -10,7 +10,6 @@
       </div>
       <!-- /.row -->
     </div>
-
     <div class="d-flex justify-content-end my-5">
       <label>Data Inicial:</label>
       <input type="date" style="width: 180px" class="form-control" name="initial_date" 
@@ -23,17 +22,29 @@
       <input type="submit" value="search" class="btn btn-primary">
     </div>
     <div class="col-sm-6">
-      <h3><i class="far fa-calendar-alt"></i> Dia</h3>
     </div>
     <div class="col-sm-6">
-      <h5><i class="far fa-money-bill-alt"></i> Lucro R$ </h5>
     </div>
-
   </div>
   <!-- /.content-header -->
   <!-- Main content -->
   <section class="content">
     <div class="container-fluid">
+      <div class="row mb-4">
+        <div class="col-8 text-center">
+          <h3><i class="far fa-calendar-alt"></i> Dia <%= Date.today.strftime('%d/%m/%Y') %></h3>
+        </div>
+      </div>
+      <div class="row mb-5">
+        <div class="col-12 col-sm-6 col-md-4 text-center">
+          <h5><i class="far fa-money-bill-alt"></i> Lucro R$ </h5>
+          Total: <%= @sum_order.round(2) %>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 text-center">
+          <h5><i class="far fa-money-bill-alt"></i> Ticket Médio R$ </h5>
+          Total: <%= (@sum_order / @orders.count).round(2) %>
+        </div>
+      </div>
       <!-- Info boxes -->
       <div class="row">
         <div class="col-12 col-sm-6 col-md-4">
@@ -41,7 +52,7 @@
             <span class="info-box-icon bg-primary elevation-1"><i class="fas fa-list-alt"></i></span>
             <div class="info-box-content">
               <span class="info-box-text">Total</span>
-                <span class="info-box-number"> <%= @orders.count %></span> 
+              <span class="info-box-number"> <%= @orders.count %></span>
             </div>
           </div>
         </div>
@@ -57,69 +68,69 @@
         <div class="col-12 col-sm-6 col-md-4">
           <div class="info-box mb-3">
             <span class="info-box-icon bg-info elevation-1"><i class="fas fa-spinner"></i></i></span>
-            <div class="info-box-content">
-              <span class="info-box-text">Em Andamento</span>
-              <span class="info-box-number"><%= @orders_progress.count %></span>
-            </div>
+          <div class="info-box-content">
+            <span class="info-box-text">Em Andamento</span>
+            <span class="info-box-number"><%= @orders_progress.count %></span>
           </div>
         </div>
-        <div class="clearfix hidden-md-up"></div>
-        <div class="col-12 col-sm-6 col-md-4">
-          <div class="info-box mb-3">
-            <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-shopping-cart"></i></span>
-            <div class="info-box-content">
-              <span class="info-box-text">Na fila</span>
-              <span class="info-box-number"><%= @orders_queue.count %></span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-        <div class="col-12 col-sm-6 col-md-4">
-          <div class="info-box mb-3">
-            <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-window-close"></i></span>
-            <div class="info-box-content">
-              <span class="info-box-text">Cancelados</span>
-                <span class="info-box-number"><%= @orders_canceled.count %></span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
       </div>
-      
-      <h5 class="my-4">Selecione o atendente para visualizar os pedidos:</h5>
-
+      <div class="clearfix hidden-md-up"></div>
+      <div class="col-12 col-sm-6 col-md-4">
+        <div class="info-box mb-3">
+          <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-shopping-cart"></i></span>
+          <div class="info-box-content">
+            <span class="info-box-text">Na fila</span>
+            <span class="info-box-number"><%= @orders_queue.count %></span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+      </div>
+      <!-- /.col -->
+      <div class="col-12 col-sm-6 col-md-4">
+        <div class="info-box mb-3">
+          <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-window-close"></i></span>
+          <div class="info-box-content">
+            <span class="info-box-text">Cancelados</span>
+            <span class="info-box-number"><%= @orders_canceled.count %></span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <div class="container">
+      <h5 class="my-4">Pedidos por Status:</h5>
       <div class="row">
-        <div class="col-12 col-sm-6 col-md-3">
-          <div class="mb-3">
-            <div class="">
-              <h6>Nome do atendente</h6>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-3">
-          <div class="mb-3">
-            <div class="">
-              <h6>Nome do atendente</h6>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-3">
-          <div class="mb-3">
-            <div class="">
-              <h6>Nome do atendente</h6>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-3">
-          <div class="mb-3">
-            <div class="">
-              <h6>Nome do atendente</h6>
-            </div>
-          </div>
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <% @orders_status.to_a.group_by { |x| x.situation.upcase }.each do |order| %>
+              <thead>
+                <tr>
+                  <th colspan="8" class="text-center" style="border-top: none;">
+                    <p><%= order.first %></p>
+                  </th>
+                </tr>
+              </thead>
+              <thead>
+                <tr>
+                  <th scope="col">Pedido</th>
+                  <th scope="col">Cliente</th>
+                  <th scope="col">Mesa</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% order.second.each do |order| %>
+                  <tr>
+                    <th scope="row"><%= order.id %></th>
+                    <td><%= order.client_name %></td>
+                    <td><%= order.table_number %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            <% end %>
+          </table>
         </div>
       </div>
     </div>
@@ -127,4 +138,3 @@
   </section>
   <!-- /.content -->
 </div>
-<!-- /.content-wrapper -->
