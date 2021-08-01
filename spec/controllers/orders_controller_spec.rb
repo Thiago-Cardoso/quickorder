@@ -30,7 +30,7 @@ RSpec.describe OrdersController, type: :controller do
          employee_id: @current_employee.id } }
     end
 
-    it "Redirect to new products" do
+    it "Redirect to new orders" do
       expect(response).to have_http_status(302)
       expect(response).to redirect_to("/orders")
     end
@@ -56,7 +56,7 @@ RSpec.describe OrdersController, type: :controller do
       request.env["HTTP_ACCEPT"] = 'application/json'
     end
 
-    context "updates the requested products" do
+    context "updates the requested orders" do
       before(:each) do
         order = create(:order)
         put :update, params: {id: order.id, order: @new_order_attributes}
