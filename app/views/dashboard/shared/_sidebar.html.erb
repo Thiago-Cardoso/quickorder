@@ -51,6 +51,18 @@
           <% end %>
         </li>
       <% end %>
+
+      <% if current_employee.occupation == 'admin' || current_employee.occupation == 'cooker' %>
+        <li class="nav-item">
+          <%= link_to kitchen_orders_path, class:"nav-link" do %>
+            <i class="nav-icon fas fa-th"></i>
+            <p>
+              Cozinha
+            </p>
+          <% end %>
+        </li>
+      <% end %>
+
         <% if current_employee.occupation == 'admin' || current_employee.occupation == 'clerk' %>
         <li class="nav-item">
           <%= link_to orders_path, class:"nav-link" do %>
