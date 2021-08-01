@@ -12,7 +12,4 @@ RSpec.describe Product, type: :model do
     it { is_expected.to validate_presence_of(:price)}
   end
 
-  context 'Association' do
-    it { is_expected.to belong_to(:category)}
-  end
 end
