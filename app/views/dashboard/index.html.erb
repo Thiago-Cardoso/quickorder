@@ -124,7 +124,8 @@
                     <td><%= order.client_name %></td>
                     <td><%= order.table_number %></td>
                     <td><%= order.employee.name %></td>
-                    <td><%= order.situation %></td>
+                    <td><%= Order.human_enum_name(:situation, order.situation) %></td>
+                    
                   </tr>
                 <% end %>
               </tbody>
