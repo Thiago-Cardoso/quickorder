@@ -12,6 +12,18 @@ pt-BR:
           progress: Em preparação
           concluded: Concluido
           canceled: Cancelado
+      employee:
+        occupations:
+          admin: Administrador
+          clerk: Garçon
+          cooker: Cozinheiro
+        statuses:
+          active: Ativo
+          inactive: Inativo
+      product:
+        statuses:
+          active: Ativo
+          inactive: Inativo
     errors:
       messages:
         record_invalid: 'A validação falhou: %{errors}'

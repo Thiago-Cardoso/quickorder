@@ -33,7 +33,7 @@
                 <td><%= product.name %></td>
                 <td><%= product.description %></td>
                 <td><%= product.price %></td>
-                <td><%= product.status %></td>
+                <td><%= Product.human_enum_name(:status, product.status) %></td>
                 <td>
                   <%= link_to edit_dashboard_product_path(product), remote: true, class:"btn bg-info btn-sm",
                                                                       data:{toggle:"modal", target:"#editProductModal"} do %>

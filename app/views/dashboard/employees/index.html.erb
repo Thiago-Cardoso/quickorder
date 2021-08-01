@@ -31,7 +31,7 @@
                 <th scope="row"><%= employee.id %></th>
                 <td><%= employee.name %></td>
                 <td><%= employee.email %></td>
-                <td><%= employee.occupation %></td>
+                <td><%= Employee.human_enum_name(:occupation, employee.occupation) %></td>
                 <td>
                   <%= link_to edit_dashboard_employee_path(employee), remote: true, class:"btn bg-info btn-sm",
                                                                       data:{toggle:"modal", target:"#editEmployeeModal"} do %>
