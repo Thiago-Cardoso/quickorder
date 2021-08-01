@@ -7,7 +7,7 @@
 <div class="sidebar">
   <div class="user-panel mt-4 pb-3 mb-3 d-flex">
     <div class="image">
-      <%= image_tag 'user.png', class:"img-circle", alt:"User" %>
+      <%# image_tag 'user.png', class:"img-circle", alt:"User" %>
     </div>
     <div class="info">
          <%= link_to "Perfil", edit_dashboard_employee_path(current_employee.id) %> <br />
@@ -27,18 +27,18 @@
       <% if current_employee.occupation == 'admin' %>
         <li class="nav-item">
           <%= link_to dashboard_categories_path, class:"nav-link" do %>
-            <i class="nav-icon fas fa-th"></i>
+            <i class="fas fa-utensils"></i>
             <p>
-              Categoria
+              Categorias
             </p>
           <% end %>
         </li>
         </li>
         <li class="nav-item">
           <%= link_to dashboard_products_path, class:"nav-link" do %>
-            <i class="nav-icon fas fa-th"></i>
+            <i class="fas fa-hamburger"></i>
             <p>
-              Produto
+              Produtos
             </p>
           <% end %>
         </li>
@@ -55,7 +55,7 @@
       <% if current_employee.occupation == 'admin' || current_employee.occupation == 'cooker' %>
         <li class="nav-item">
           <%= link_to kitchen_orders_path, class:"nav-link" do %>
-            <i class="nav-icon fas fa-th"></i>
+            <i class="fas fa-mortar-pestle"></i>
             <p>
               Cozinha
             </p>
@@ -66,9 +66,9 @@
         <% if current_employee.occupation == 'admin' || current_employee.occupation == 'clerk' %>
         <li class="nav-item">
           <%= link_to orders_path, class:"nav-link" do %>
-            <i class="nav-icon fas fa-th"></i>
+           <i class="fas fa-cart-plus"></i>
             <p>
-              Pedido
+              Pedidos
             </p>
           <% end %>
         </li>
