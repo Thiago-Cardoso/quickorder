@@ -1,3 +1,73 @@
 // Place all the styles related to the Orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+body {
+    background: #bdc3c7;
+}
+
+i {
+    margin-right: 10px;
+}
+
+
+/*------------------------*/
+
+input:focus,
+button:focus,
+.form-control:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.form-control:disabled,
+.form-control[readonly] {
+    background-color: #fff;
+}
+
+.table tr,
+.table tr td {
+    vertical-align: middle;
+}
+
+.button-container {
+    display: flex;
+    align-items: center;
+}
+
+.button-container .form-control {
+    max-width: 80px;
+    text-align: center;
+    display: inline-block;
+    margin: 0px 5px;
+}
+
+#myTable .form-control {
+    width: auto;
+    display: inline-block;
+}
+
+.cart-qty-plus,
+.cart-qty-minus {
+    width: 38px;
+    height: 38px;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+}
+
+.cart-qty-plus:hover,
+.cart-qty-minus:hover {
+    background-color: #5161ce;
+    color: #fff;
+}
+
+.img-prdct {
+    width: 50px;
+    height: 50px;
+    /* 	background-color: #5161ce; */
+    border-radius: 4px;
+}
+
+.img-prdct img {
+    width: 100%;
+}

@@ -12,3 +12,35 @@
   margin-left: auto !important;
   margin-right: auto !important;
 }
+
+.logo-order{
+  margin-top: 100px;
+}
+
+.logo-order img{
+  max-width: 200px;
+}
+
+.order {
+  width: 100vw;
+  margin-top: 70px;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center
+  }
+
+  .order .info-box{ 
+    display: block;
+  }
+
+  .order .svg-inline--fa{
+    margin-top: 50px;
+  }
+
+  .order .info-box .info-box-icon {
+    min-width: 100%;
+    min-height: 200px;
+    display: block;
+  }

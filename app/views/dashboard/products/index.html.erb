@@ -39,6 +39,10 @@
                                                                       data:{toggle:"modal", target:"#editProductModal"} do %>
                     <i class="fas fa-edit"></i>
                   <% end %>
+                   <%= link_to dashboard_product_path(product), method: :delete, class:"btn bg-danger btn-sm",
+                                                                 data: {confirm: "Deseja realmente excluir?"} do %>
+                    <i class="far fa-trash-alt"></i>
+                  <% end %>
                 </td>
               </tr>
             <% end %>

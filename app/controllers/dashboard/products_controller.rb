@@ -32,10 +32,14 @@ class Dashboard::ProductsController < DashboardController
   end
 
   def destroy
-    if @product.destroy
-      redirect_to dashboard_products_path, notice: "#{@product.name} excluída com sucesso!"
+    if verify_order
+       if @product.destroy
+        redirect_to dashboard_products_path, notice: "#{@product.name} excluída com sucesso!"
+      else
+        alert_errors
+      end
     else
-      alert_errors
+      redirect_to dashboard_products_path, flash: { error: "Não é possivel excluir o produto #{@product.name} ele já possui algum pedido feito, somente é permitido desativar" }
     end
   end
 
@@ -43,6 +47,10 @@ class Dashboard::ProductsController < DashboardController
 
   def save_product!
     @product.save!
+  end
+
+  def verify_order
+    @product_verify =  ProductOrder.where(product_id: params[:id]).blank?
   end
 
   def alert_errors

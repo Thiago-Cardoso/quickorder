@@ -37,6 +37,10 @@
                                                                       data:{toggle:"modal", target:"#editEmployeeModal"} do %>
                     <i class="fas fa-edit"></i>
                   <% end %>
+                  <%= link_to dashboard_employee_path(employee), method: :delete, class:"btn bg-danger btn-sm",
+                                                                 data: {confirm: "Deseja realmente excluir?"} do %>
+                    <i class="far fa-trash-alt"></i>
+                  <% end %>
                 </td>
               </tr>
             <% end %>

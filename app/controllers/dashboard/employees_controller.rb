@@ -33,17 +33,25 @@ class Dashboard::EmployeesController < DashboardController
   end
 
   def destroy
-    if @employee.destroy
-      redirect_to dashboard_employees_path, notice: "#{@employee.name} excluída com sucesso!"
-    else
-      alert_errors
-    end
-  end
+    if verify_order
+      if @employee.destroy
+        redirect_to dashboard_employees_path, notice: "#{@employee.name} excluída com sucesso!"
+      else
+        alert_errors
+      end
+   else
+     redirect_to dashboard_employees_path, flash: { error: "Não é possivel excluir o usuário #{@employee.name} ele já possui algum pedido feito, somente é permitido desativar" }
+   end
+ end
 
   private
 
   def save_employee!
     @employee.save!
+  end
+
+  def verify_order
+    @employee_verify =  Order.where(employee: params[:id]).blank?
   end
 
   def alert_errors

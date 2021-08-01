@@ -1,13 +1,14 @@
 require 'rails_helper'
 
-RSpec.describe Dashboard::CategoriesController, type: :controller do
+RSpec.describe Dashboard::ProductsController, type: :controller do
 
   include Devise::Test::ControllerHelpers
 
   before(:each) do
     @request.env["devise.mapping"] = Devise.mappings[:employee]
     @current_employee = FactoryBot.create(:employee)
-    @categories = FactoryBot.create(:category)
+    @product = FactoryBot.create(:product)
+    @category = FactoryBot.create(:category)
     sign_in @current_employee
   end
 
@@ -23,13 +24,15 @@ RSpec.describe Dashboard::CategoriesController, type: :controller do
 
   describe "POST #create" do
     before(:each) do
-      @categories = attributes_for(:category)
-      post :create, params: {category: @categories}
+      post :create, params: { product: { name: @product.name,
+         description: @product.description,
+         price: @product.price,
+         category_id: @category.id } }
     end
 
-    it "Redirect to new categories" do
+    it "Redirect to new products" do
       expect(response).to have_http_status(302)
-      expect(response).to redirect_to("/dashboard/categories")
+      expect(response).to redirect_to("/dashboard/products")
     end
   end
 
@@ -38,10 +41,10 @@ RSpec.describe Dashboard::CategoriesController, type: :controller do
       request.env["HTTP_ACCEPT"] = 'application/json'
     end
 
-    context "Destroy category" do
+    context "Destroy products" do
       it "returns http success" do
-        category = create(:category)
-        delete :destroy, params: {id: category.id}
+        product = create(:product)
+        delete :destroy, params: {id: product.id}
         expect(response).to have_http_status(:success) | have_http_status(302)
       end
     end
@@ -49,14 +52,14 @@ RSpec.describe Dashboard::CategoriesController, type: :controller do
 
   describe "PUT #update" do
     before(:each) do
-      @new_category_attributes = attributes_for(:category)
+      @new_product_attributes = attributes_for(:product)
       request.env["HTTP_ACCEPT"] = 'application/json'
     end
 
-    context "updates the requested categories" do
+    context "updates the requested products" do
       before(:each) do
-        category = create(:category)
-        put :update, params: {id: category.id, category: @new_category_attributes}
+        product = create(:product)
+        put :update, params: {id: product.id, product: @new_product_attributes}
         expect(response).to have_http_status(:success)
       end
     end

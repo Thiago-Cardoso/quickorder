@@ -1,13 +1,12 @@
 require 'rails_helper'
 
-RSpec.describe Dashboard::CategoriesController, type: :controller do
+RSpec.describe Dashboard::EmployeesController, type: :controller do
 
   include Devise::Test::ControllerHelpers
 
   before(:each) do
     @request.env["devise.mapping"] = Devise.mappings[:employee]
     @current_employee = FactoryBot.create(:employee)
-    @categories = FactoryBot.create(:category)
     sign_in @current_employee
   end
 
@@ -23,13 +22,13 @@ RSpec.describe Dashboard::CategoriesController, type: :controller do
 
   describe "POST #create" do
     before(:each) do
-      @categories = attributes_for(:category)
-      post :create, params: {category: @categories}
+      @employees = attributes_for(:employee)
+      post :create, params: {employee: @employees}
     end
 
-    it "Redirect to new categories" do
+    it "Redirect to new employee" do
       expect(response).to have_http_status(302)
-      expect(response).to redirect_to("/dashboard/categories")
+      expect(response).to redirect_to("/dashboard/employees")
     end
   end
 
@@ -38,10 +37,10 @@ RSpec.describe Dashboard::CategoriesController, type: :controller do
       request.env["HTTP_ACCEPT"] = 'application/json'
     end
 
-    context "Destroy category" do
+    context "Destroy employees" do
       it "returns http success" do
-        category = create(:category)
-        delete :destroy, params: {id: category.id}
+        employee = create(:employee)
+        delete :destroy, params: {id: employee.id}
         expect(response).to have_http_status(:success) | have_http_status(302)
       end
     end
@@ -49,14 +48,14 @@ RSpec.describe Dashboard::CategoriesController, type: :controller do
 
   describe "PUT #update" do
     before(:each) do
-      @new_category_attributes = attributes_for(:category)
+      @new_employee_attributes = attributes_for(:employee)
       request.env["HTTP_ACCEPT"] = 'application/json'
     end
 
-    context "updates the requested categories" do
+    context "updates the requested employee" do
       before(:each) do
-        category = create(:category)
-        put :update, params: {id: category.id, category: @new_category_attributes}
+        employee = create(:employee)
+        put :update, params: {id: employee.id, employee: @new_employee_attributes}
         expect(response).to have_http_status(:success)
       end
     end
