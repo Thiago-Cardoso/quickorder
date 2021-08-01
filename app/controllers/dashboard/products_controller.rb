@@ -13,19 +13,17 @@ class Dashboard::ProductsController < DashboardController
   def edit; end
 
   def create
-    @product = Product.new
-    @product.attributes = products_params
-    if save_product!
-      redirect_to dashboard_products_path, notice: "#{@product.name} cadastrada com sucesso!"
+    @product = Product.new(products_params)
+    if @product.save
+      redirect_to dashboard_products_path, notice: "#{@product.name} cadastrado com sucesso!"
     else
       alert_errors
     end
   end
 
   def update
-    @product.attributes = products_params
-    if save_product!
-      redirect_to dashboard_products_path, notice: "#{@product.name} atualizada com sucesso!"
+    if @product.update(products_params)
+      redirect_to dashboard_products_path, notice: "#{@product.name} atualizado com sucesso!"
     else
       alert_errors
     end
@@ -34,7 +32,7 @@ class Dashboard::ProductsController < DashboardController
   def destroy
     if verify_order
        if @product.destroy
-        redirect_to dashboard_products_path, notice: "#{@product.name} excluída com sucesso!"
+        redirect_to dashboard_products_path, notice: "#{@product.name} excluído com sucesso!"
       else
         alert_errors
       end
@@ -44,10 +42,6 @@ class Dashboard::ProductsController < DashboardController
   end
 
   private
-
-  def save_product!
-    @product.save!
-  end
 
   def verify_order
     @product_verify =  ProductOrder.where(product_id: params[:id]).blank?

@@ -44,7 +44,6 @@
                   <% end %>
                   <% category&.products.each do |product| %>
                     <%= f.fields_for :product_orders, ProductOrder.new  do |ff|%>
-                      <%= ff.hidden_field :order_id, value: current_order.id %>
                       <%= ff.hidden_field :product_id, value: product.id %>
                       <tr>
                         <th scope="row">
