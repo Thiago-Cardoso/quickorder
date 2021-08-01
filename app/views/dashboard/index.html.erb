@@ -107,7 +107,7 @@
       <div class="row">
         <div class="table-responsive">
           <table class="table table-hover">
-            <% @orders_status.to_a.group_by { |x| x.situation.upcase }.each do |order| %>
+            <% @orders_status.to_a.group_by { |x| x.employee.name.upcase }.each do |order| %>
               <thead>
                 <tr>
                   <th colspan="8" class="text-center" style="border-top: none;">
@@ -120,6 +120,7 @@
                   <th scope="col">Pedido</th>
                   <th scope="col">Cliente</th>
                   <th scope="col">Mesa</th>
+                  <th scope="col">Status</th>
                 </tr>
               </thead>
               <tbody>
@@ -128,6 +129,7 @@
                     <th scope="row"><%= order.id %></th>
                     <td><%= order.client_name %></td>
                     <td><%= order.table_number %></td>
+                    <td><%= order.situation %></td>
                   </tr>
                 <% end %>
               </tbody>
