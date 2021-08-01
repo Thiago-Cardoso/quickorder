@@ -57,7 +57,7 @@ class OrdersController < ApplicationController
 
 
   def alert_errors
-    if @order.client_name.blank? && @order.table_number.blank?
+    if @order.client_name.blank? || @order.table_number.blank?
       redirect_to orders_path, alert: @order.errors.full_messages.to_sentence
     else
       flash[:error] = "Selecione ao menos um produto"

@@ -4,9 +4,11 @@ class Ability
       if employee.admin?
         can :manage, :all
       elsif employee.clerk?
-        can :read, :all
+        can :read, :Order
+        can :read, :Dashboard
       elsif employee.cooker?
-        can :read, :all
+        can :read, :kitchen_orders
+        can :read, :Dashboard
       end
   end
 end
