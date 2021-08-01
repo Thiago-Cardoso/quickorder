@@ -42,7 +42,7 @@
                       </tr>
                     </thead>
                   <% end %>
-                  <% category&.products.where(status: 0).each do |product| %>
+                  <% category&.products.where(status: 1).each do |product| %>
                     <%= f.fields_for :product_orders, ProductOrder.new  do |ff|%>
                       <%= ff.hidden_field :product_id, value: product.id %>
                       <tr>
