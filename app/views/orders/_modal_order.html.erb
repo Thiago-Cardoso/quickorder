@@ -1,7 +1,7 @@
 <!-- Modal -->
 <div class="modal fade" id="orderModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl">
-    <div class="modal-content">
+    <div class="modal-content bg-primary">
       <div class="modal-header">
         <h5 class="modal-title" id="staticBackdropLabel">Novo Pedido</h5>
         <div class="pull-right">
@@ -10,9 +10,9 @@
           <button type="button" class="btn btn-success"><i class="fas fa-paper-plane"></i> Enviar Pedido</button>
         </div>
       </div>
-      <div class="modal-body">
+      <div class="modal-body dark-bg">
         <!-- Main -->
-        <div class="container">
+        <div class="table-responsive" id="orderTable">
           <% @categories.each do |category| %>
             <% unless category.products.blank? %>
               <strong><%= category&.description&.upcase %></strong>
@@ -38,13 +38,13 @@
         <div class="modal fade" id="cart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
-              <div class="modal-header">
+              <div class="modal-header dark-footer">
                 <h5 class="modal-title" id="exampleModalLabel">Cart</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div class="modal-body">
+              <div class="modal-body dark-bg">
                 <table class="show-cart table">
                 </table>
                 <div>Total price: $<span class="total-cart"></span></div>
@@ -57,6 +57,9 @@
   </div>
 </div>
 <script>
+  $( document ).on('turbolinks:load', function() {
+    $('#orderTable').DataTable();
+  });
   // ************************************************
   // Shopping Cart API
   // ************************************************

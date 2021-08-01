@@ -9,7 +9,7 @@ pt-BR:
         table_number: Mesa
         situations:
           queue: Na fila
-          progress: Em preparação
+          progress: Em Andamento
           concluded: Concluido
           canceled: Cancelado
       employee:
