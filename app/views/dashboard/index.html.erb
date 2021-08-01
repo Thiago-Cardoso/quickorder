@@ -10,21 +10,23 @@
       </div>
       <!-- /.row -->
     </div>
+    <%= form_tag dashboard_path, method: :get do %>
     <div class="d-flex justify-content-end my-5">
-      <label>Data Inicial:</label>
-      <input type="date" style="width: 180px" class="form-control" name="initial_date" 
-        value="<%= params[:initial_date]%>">
-      <br>
-      <label>Data Final:</label>
-      <input type="date" style="width: 180px" class="form-control" name="final_date" 
-        value="<%= params[:final_date]%>">
-      <br>
-      <input type="submit" value="search" class="btn btn-primary">
-    </div>
-    <div class="col-sm-6">
-    </div>
-    <div class="col-sm-6">
-    </div>
+          <label>Data Inicial:</label>
+          <input type="date" style="width: 180px" class="form-control" name="initial_date" 
+            value="<%= params[:initial_date]%>">
+          <br>
+          <label>Data Final:</label>
+          <input type="date" style="width: 180px" class="form-control" name="final_date" 
+            value="<%= params[:final_date]%>">
+          <br>
+          <input type="submit" value="search" class="btn btn-primary">
+        </div>
+        <div class="col-sm-6">
+        </div>
+        <div class="col-sm-6">
+        </div>
+      <% end %>
   </div>
   <!-- /.content-header -->
   <!-- Main content -->
