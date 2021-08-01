@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 2021_07_30_032051) do
   end
 
   create_table "product_orders", force: :cascade do |t|
-    t.integer "quantitie", default: 0
+    t.integer "quantitie"
     t.string "note"
     t.bigint "product_id", null: false
     t.bigint "order_id", null: false

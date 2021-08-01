@@ -16,18 +16,16 @@ class OrdersController < ApplicationController
   def edit; end
 
   def create
-    @order = Order.new
-    @order.attributes = orders_params
-    if save_order!
+    if clean_orders && @order.total > 0
       redirect_to orders_path, notice: "Pedido #{@order.id} realizado com sucesso!"
     else
       alert_errors
     end
   end
 
+
   def update
-    @order.attributes = orders_params
-    if save_order!
+    if @order.update(orders_params)
       redirect_to orders_path, notice: "Pedido #{@order.id} atualizado com sucesso!"
     else
       alert_errors
@@ -50,12 +48,21 @@ class OrdersController < ApplicationController
 
   private
 
-  def save_order!
-    @order.save!
+  def clean_orders
+    @order = Order.new(orders_params)
+    nil_elements = @order.product_orders.select {|x| x.quantitie == nil}
+    @order.product_orders.delete(nil_elements)
+    @order.save
   end
 
+
   def alert_errors
-    redirect_to orders_path, alert: @order.errors.full_messages.to_sentence
+    if @order.total > 0
+      redirect_to orders_path, alert: @order.errors.full_messages.to_sentence
+    else
+      flash[:error] = "Selecione ao menos um produto"
+      redirect_to orders_path
+    end
   end
 
   def set_orders
@@ -64,6 +71,7 @@ class OrdersController < ApplicationController
 
   def orders_params
     params.require(:order).permit(:client_name, :table_number, :situation, :employee_id,
-                                  product_orders_attributes: %i[quantitie note product_id _destroy])
+                                  product_orders_attributes: %i[quantitie note product_id order_id _destroy])
   end
 end
+

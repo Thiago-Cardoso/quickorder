@@ -12,10 +12,9 @@ class Dashboard::EmployeesController < DashboardController
   end
 
   def create
-    @employee = Employee.new
-    @employee.attributes = employee_params
-    if save_employee!
-      redirect_to dashboard_employees_path, notice: "#{@employee.name} cadastrada com sucesso!"
+    @employee = Employee.new(employee_params)
+    if @employee.save
+      redirect_to dashboard_categories_path, notice: "#{@employee.name} cadastrado com sucesso!"
     else
       alert_errors
     end
@@ -24,9 +23,8 @@ class Dashboard::EmployeesController < DashboardController
   def edit; end
 
   def update
-    @employee.attributes = employee_params
-    if save_employee!
-      redirect_to dashboard_employees_path, notice: "#{@employee.name} atualizada com sucesso!"
+    if @employee.update(employee_params)
+      redirect_to dashboard_employees_path, notice: "#{@employee.name} atualizado com sucesso!"
     else
       alert_errors
     end
@@ -45,10 +43,6 @@ class Dashboard::EmployeesController < DashboardController
  end
 
   private
-
-  def save_employee!
-    @employee.save!
-  end
 
   def verify_order
     @employee_verify =  Order.where(employee: params[:id]).blank?

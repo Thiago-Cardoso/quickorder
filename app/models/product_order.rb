@@ -4,6 +4,7 @@ class ProductOrder < ApplicationRecord
   belongs_to :order
   before_save :set_unit_price
   before_save :set_total
+  validates :quantitie, presence: true
 
   def unit_price
     # If there is a record
