@@ -2,19 +2,21 @@
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-QuickOf - Manage your restaurant and your orders,
-Register your orders and visualize your orders in the kitchen
+QuickOf 
+Manage your restaurant and your orders,
+Register your orders and visualize your orders in the kitchen.
 
-Features
+### Features
+
 Administration
 Manage your restaurant and your orders quickly and simply.
 
 Digital Commands - Order posting
-place your orders through the digital command
+place your orders through the digital command.
 
 Kitchen
 view your orders according to their certain status,
-cancel or complete
+cancel or complete.
 
 
 ## Index
