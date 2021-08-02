@@ -105,7 +105,8 @@ docker-compose build
 2.  Create of Database
 
 ```
-docker-compose run --rm website bundle exec rails db:create
+docker-compose run --rm website bundle exec rails db:create db:migrate
+
 ```
 
 3.  up the project
@@ -131,7 +132,7 @@ For to do the tests it is necessary in docker container running:
 
 Test using Rspec:
 
-Model
+**Model**
 category
 
 docker-compose run --rm app bundle exec rspec spec/models/category_spec.rb
@@ -152,7 +153,7 @@ Product order
 
 docker-compose run --rm app bundle exec rspec spec/models/product_order_spec.rb
 
-Controller
+**Controller**
 
 categories
 
