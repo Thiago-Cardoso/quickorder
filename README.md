@@ -3,7 +3,7 @@
    <img alt="# Quickorder" src="https://github.com/Thiago-Cardoso/quickorder/blob/master/app/assets/images/quickorder.jpeg" width="50">
   </a>
 </p>
-<p align="center"># Quickorder</p>
+<p align="center">Quickorder</p>
 
 <p align="center">
   <a href="#">
@@ -17,8 +17,18 @@
   </a>
 </p>
 
-
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+
+## Screenshot
+
+
+## Stack the Project
+
+- **Ruby on Rails**
+- **Bootstrap**
+- **Postgresql**
+- **Rspec(TDD)**
+
 
 # Quickorder
 Manage your restaurant and your orders,
