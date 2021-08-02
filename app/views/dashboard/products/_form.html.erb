@@ -17,6 +17,12 @@
           <%= f.select :status, options_for_select(Product.statuses.map { |key, value| [Product.human_enum_name(:status, key), key] },  :selected =>  @product.status, class:"form-control") %>
       </div>
     </div>
+       <div class="form-row">
+        <div class="form-group col-md-6">
+          <%= f.label :category %><br />
+          <%= f.collection_select :category_id,  Category.all, :id, :description , prompt: true%>
+        </div>
+    </div>
     <div class="form-row">
         <div class="form-group col-md-6">
           <%= f.label :image %>
@@ -26,12 +32,6 @@
           <% if @product.image.attached? %>
             <%= image_tag @product.image, style: "width: 200px; display: block;" %>
         <% end %>
-    </div>
-    <div class="form-row1">
-        <div class="form-group col-md-6">
-          <%= f.label :category %><br />
-          <%= f.collection_select :category_id,  Category.all, :id, :description , prompt: true%>
-        </div>
     </div>
     <div class="offset-md-5">
       <%= f.submit class:"btn btn-primary" %>

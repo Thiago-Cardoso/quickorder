@@ -50,9 +50,9 @@
                           <div class="product-img">
                             <div class="img-prdct">
                               <% if product.image.attached? %>
-                                <%= image_tag product.image, title:"#{product.name}", class:"img-fluid " %>
+                                  <%= image_tag product.image, title:"#{product.name}", style: "width: 50px; height display: block;" %>
                               <% else %>
-                                <%= image_tag 'no-image.png', class:"img-fluid" %>
+                                 <%= image_tag 'no-image.png', class:"img-fluid", style: "width: 50px; height: 50px; display: block;" %>
                               <% end %>
                             </div>
                           </div>
