@@ -57,7 +57,7 @@ Run seed
 - [Tests](#tests)
 - [License](#license)
 
-### Installing
+### Requirements
 
 First step is to install the docker service:
 
@@ -81,15 +81,15 @@ $ docker --version
 $ docker-compose --version
 #Must
 
-### Requirements
 
 You must have installed on your machine:
 
 - Docker
 - Docker Compose
+```
 
 ## First steps
-
+```
 
 Follow the instructions to have a project present and able to run it locally.
 
