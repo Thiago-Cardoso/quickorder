@@ -1,39 +1,29 @@
-# README
+# Quickorder
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-Things you may want to cover:
+QuickOf - Manage your restaurant and your orders,
+Register your orders and visualize your orders in the kitchen
 
-* Ruby version
+Features
+Administration
+Manage your restaurant and your orders quickly and simply.
 
-* System dependencies
+Digital Commands - Order posting
+place your orders through the digital command
 
-* Configuration
+Kitchen
+view your orders according to their certain status,
+cancel or complete
 
-* Database creation
 
-* Database initialization
+## Index
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-docker build -f Dockerfile -t ruby:3.0.1 .
-
-docker run -d \
---name quick \
--p 3000:3000 \
--v /etc/localtime:/etc/localtime:ro \
--v /etc/timezone:/etc/timezone:ro \
--v /home/dell/projetos/onebitcode/quickorder/:/app \
--v /home/dell/projetos/onebitcode/quickorder/bundle:/usr/local/bundle \
-ruby:3.0.1
-
+- [Requirements](#requirements)
+- [First steps](#first-steps)
+- [Authors](#authors)
+- [Tests](#tests)
+- [License](#license)
 
 ### Installing
 
@@ -57,16 +47,14 @@ For test if the service was installed with succeed, you can run the command for 
 $ docker --version
 #Must be have the docker version: Docker version 18.06.0-ce
 $ docker-compose --version
-#Must be have the docker-compose version: docker-compose version 1.22.0
-```
+#Must
 
-### Prerequisites
+### Requirements
 
 You must have installed on your machine:
 
 - Docker
 - Docker Compose
-
 
 ## First steps
 
@@ -105,3 +93,61 @@ mkdir tmp/pids
 Error bundle assets or webpacker run
 docker-compose run --rm app bundle exec rails webpacker:install
 
+## Tests
+
+For to do the tests it is necessary in docker container running:
+
+Test using Rspec:
+
+Model
+category
+
+docker-compose run --rm app bundle exec rspec spec/models/category_spec.rb
+
+employee
+
+docker-compose run --rm app bundle exec rspec spec/models/employee_spec.rb
+
+product
+
+docker-compose run --rm app bundle exec rspec spec/models/product_spec.rb
+
+order
+
+docker-compose run --rm app bundle exec rspec spec/models/order_spec.rb
+
+Product order
+
+docker-compose run --rm app bundle exec rspec spec/models/product_order_spec.rb
+
+Controller
+
+categories
+
+docker-compose run --rm app bundle exec rspec spec/controllers/dashboard/categories_controller_spec.rb
+
+products
+
+docker-compose run --rm app bundle exec rspec spec/controllers/dashboard/products_controller_spec.rb
+
+employees
+
+docker-compose run --rm app bundle exec rspec spec/controllers/dashboard/employees_controller_spec.rb
+
+orders
+
+docker-compose run --rm app bundle exec rspec spec/controllers/orders_controller_spec.rb
+
+
+## Authors
+
+Project created by the following developers
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+| [<img src="https://avatars1.githubusercontent.com/u/1753070?s=460&v=4" width="100px;"/><br /><sub><b>Thiago Cardoso</b></sub>](https://githucom/Thiago-Cardoso)<br /> | [<img src="https://avatars1.githubusercontent.com/u/5727529?s=460&v=4" width="100px;"/><br /><sub><b>Fabricio Comeli</b></sub>](https://github.com/fabriciobonjorno)<br /> | [<img src="https://avatars.githubusercontent.com/u/69864017?v=4" width="100px;"/><br /><sub><b>Raquel Lima</b></sub>](https://github.com/RaquelLima7)<br /> | [<img src="https://avatars.githubusercontent.com/u/8259466?v=4" width="100px;"/><br /><sub><b>Fábio Vilhena</b></sub>](https://github.com/fvilhena)<br /> | [<img src="https://avatars.githubusercontent.com/u/8593387?v=4" width="100px;"/><br /><sub><b>Pompermaier</b></sub>](https://github.com/Pompermaier)<br /> |
+| :---: | :---: | :---: | :---: | :---: |
+
+## Licença
+
+This project is licensed under a Apache license 2.0 - see file [LICENSE](LICENSE) for more details
