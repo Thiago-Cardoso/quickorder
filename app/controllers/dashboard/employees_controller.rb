@@ -14,7 +14,7 @@ class Dashboard::EmployeesController < DashboardController
   def create
     @employee = Employee.new(employee_params)
     if @employee.save
-      redirect_to dashboard_categories_path, notice: "#{@employee.name} cadastrado com sucesso!"
+      redirect_to dashboard_employees_path, notice: "#{@employee.name} cadastrado com sucesso!"
     else
       alert_errors
     end
