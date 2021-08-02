@@ -133,6 +133,7 @@ For to do the tests it is necessary in docker container running:
 Test using Rspec:
 
 **Model**
+
 category
 
 docker-compose run --rm app bundle exec rspec spec/models/category_spec.rb
