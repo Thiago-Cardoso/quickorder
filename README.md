@@ -23,9 +23,17 @@
 
 <a href="https://quickorder.pompis.com.br" target="_blank">Acessar projeto</a>
 
+## Modelagem BD
+
+<a href="https://github.com/Thiago-Cardoso/quickorder/blob/master/app/assets/images/modelagem.jpeg" target="_blank">Acessar Link</a>
+
+## Mockups
+
+<a href="https://github.com/Thiago-Cardoso/quickorder/blob/master/app/assets/images/mockup.png" target="_blank">Acessar Link</a>
+
 
 ## Screenshot
-
+![](https://github.com/Thiago-Cardoso/quickorder/blob/master/app/assets/images/projeto.gif)
 
 ## Stack the Project
 
