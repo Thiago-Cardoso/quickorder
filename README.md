@@ -18,6 +18,8 @@ Kitchen
 view your orders according to their certain status,
 cancel or complete.
 
+### Populate data of access
+Run seed
 
 ## Index
 
