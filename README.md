@@ -181,6 +181,6 @@ Project created by the following developers
 | [<img src="https://avatars1.githubusercontent.com/u/1753070?s=460&v=4" width="100px;"/><br /><sub><b>Thiago Cardoso</b></sub>](https://github.com/Thiago-Cardoso)<br /> | [<img src="https://avatars.githubusercontent.com/u/28460996?v=4" width="100px;"/><br /><sub><b>Fabricio Comeli</b></sub>](https://github.com/fabriciobonjorno)<br /> | [<img src="https://avatars.githubusercontent.com/u/69864017?v=4" width="100px;"/><br /><sub><b>Raquel Lima</b></sub>](https://github.com/RaquelLima7)<br /> | [<img src="https://avatars.githubusercontent.com/u/8259466?v=4" width="100px;"/><br /><sub><b>Fábio Vilhena</b></sub>](https://github.com/fvilhena)<br /> | [<img src="https://avatars.githubusercontent.com/u/8593387?v=4" width="100px;"/><br /><sub><b>Pompermaier</b></sub>](https://github.com/Pompermaier)<br /> |
 | :---: | :---: | :---: | :---: | :---: |
 
-## Licença
+## License
 
 This project is licensed under a Apache license 2.0 - see file [LICENSE](LICENSE) for more details
