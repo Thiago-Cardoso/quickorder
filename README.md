@@ -141,7 +141,7 @@ docker-compose run --rm app bundle exec rails webpacker:install
 
 ## Tests
 
-![](https://github.com/Thiago-Cardoso/quickorder/blob/master/app/assets/images/test.png)
+![](https://github.com/Thiago-Cardoso/quickorder/blob/master/app/assets/images/testn.png)
 
 For to do the tests it is necessary in docker container running:
 
