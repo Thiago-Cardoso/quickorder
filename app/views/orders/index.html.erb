@@ -52,7 +52,9 @@
   <%= render 'modal_historic' %>
 <footer class="text-center mt-5 p-5">
   Versão 1.0.0<br />
-  <a class="btn btn-sm btn-primary m-3" href="/"><i class="fas fa-undo-alt"></i> Voltar</a>
+  <% unless current_employee.clerk? %>
+    <a class="btn btn-sm btn-primary m-3" href="/"><i class="fas fa-undo-alt"></i> Voltar</a>
+  <% end %>
   <a rel="nofollow" data-method="delete" class="btn btn-sm btn-danger" href="/employees/sign_out"><i class="fas fa-door-open"></i> Sair</a>
 </footer>
 

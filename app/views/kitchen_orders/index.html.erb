@@ -8,7 +8,9 @@
           <h1>Pedidos na Cozinha</h1>
         </div>
         <div class="col-sm-2">
-          <a class="btn btn-sm btn-primary m-3" href="/"><i class="fas fa-undo-alt"></i> Voltar</a>
+          <% unless current_employee.cooker? %>
+            <a class="btn btn-sm btn-primary m-3" href="/"><i class="fas fa-undo-alt"></i> Voltar</a>
+          <% end %>
           <a rel="nofollow" data-method="delete" class="btn btn-sm btn-danger" href="/employees/sign_out"><i class="fas fa-door-open"></i> Sair</a>
         </div>
       </div>
