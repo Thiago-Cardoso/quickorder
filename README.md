@@ -47,6 +47,9 @@
 Manage your restaurant and your orders,
 Register your orders and visualize your orders in the kitchen.
 
+# Video Youtube
+Link: https://www.youtube.com/watch?v=IRHX0t6H-30
+
 ### Features
 
 Administration
